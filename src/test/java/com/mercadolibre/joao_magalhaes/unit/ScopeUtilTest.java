@@ -1,6 +1,6 @@
 package com.mercadolibre.joao_magalhaes.unit;
 
-import com.mercadolibre.joao_magalhaes.util.ScopeUtils;
+import com.mercadolibre.joao_magalhaes.application.util.ScopeUtils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import org.junit.jupiter.api.Test;

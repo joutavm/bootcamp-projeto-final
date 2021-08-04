@@ -1,4 +1,4 @@
-package com.mercadolibre.joao_magalhaes.util;
+package com.mercadolibre.joao_magalhaes.application.util;
 
 import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;

@@ -1,4 +1,4 @@
-package com.mercadolibre.joao_magalhaes.exceptions;
+package com.mercadolibre.joao_magalhaes.domain.exceptions;
 
 public class ApiError {
 	private String error;

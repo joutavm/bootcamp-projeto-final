@@ -1,4 +1,4 @@
-package com.mercadolibre.joao_magalhaes.config;
+package com.mercadolibre.joao_magalhaes.application.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -7,8 +7,8 @@ import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import static com.mercadolibre.joao_magalhaes.util.ScopeUtils.SCOPE_VALUE;
-import static com.mercadolibre.joao_magalhaes.util.ScopeUtils.isLocalScope;
+import static com.mercadolibre.joao_magalhaes.application.util.ScopeUtils.SCOPE_VALUE;
+import static com.mercadolibre.joao_magalhaes.application.util.ScopeUtils.isLocalScope;
 import static java.lang.String.format;
 
 @Configuration

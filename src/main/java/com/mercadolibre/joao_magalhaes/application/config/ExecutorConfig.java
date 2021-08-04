@@ -1,4 +1,4 @@
-package com.mercadolibre.joao_magalhaes.config;
+package com.mercadolibre.joao_magalhaes.application.config;
 
 import com.mercadolibre.threading.executor.MeliExecutors;
 import java.util.concurrent.ExecutorService;

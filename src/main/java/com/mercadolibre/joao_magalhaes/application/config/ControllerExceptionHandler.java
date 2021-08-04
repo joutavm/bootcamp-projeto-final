@@ -1,7 +1,7 @@
-package com.mercadolibre.joao_magalhaes.config;
+package com.mercadolibre.joao_magalhaes.application.config;
 
-import com.mercadolibre.joao_magalhaes.exceptions.ApiError;
-import com.mercadolibre.joao_magalhaes.exceptions.ApiException;
+import com.mercadolibre.joao_magalhaes.domain.exceptions.ApiError;
+import com.mercadolibre.joao_magalhaes.domain.exceptions.ApiException;
 import com.newrelic.api.agent.NewRelic;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;

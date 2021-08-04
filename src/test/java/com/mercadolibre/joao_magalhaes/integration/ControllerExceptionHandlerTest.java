@@ -1,8 +1,8 @@
 package com.mercadolibre.joao_magalhaes.integration;
 
-import com.mercadolibre.joao_magalhaes.controller.PingController;
-import com.mercadolibre.joao_magalhaes.exceptions.ApiError;
-import com.mercadolibre.joao_magalhaes.exceptions.ApiException;
+import com.mercadolibre.joao_magalhaes.application.controller.PingController;
+import com.mercadolibre.joao_magalhaes.domain.exceptions.ApiError;
+import com.mercadolibre.joao_magalhaes.domain.exceptions.ApiException;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.http.HttpMethod;

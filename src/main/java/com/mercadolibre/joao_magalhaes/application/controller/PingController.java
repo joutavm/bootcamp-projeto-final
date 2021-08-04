@@ -1,4 +1,4 @@
-package com.mercadolibre.joao_magalhaes.controller;
+package com.mercadolibre.joao_magalhaes.application.controller;
 
 import com.newrelic.api.agent.NewRelic;
 import org.springframework.web.bind.annotation.GetMapping;

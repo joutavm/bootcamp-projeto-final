@@ -1,7 +1,7 @@
 package com.mercadolibre.joao_magalhaes.integration;
 
 import com.mercadolibre.restclient.mock.RequestMockHolder;
-import com.mercadolibre.joao_magalhaes.Application;
+import com.mercadolibre.joao_magalhaes.application.Application;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;

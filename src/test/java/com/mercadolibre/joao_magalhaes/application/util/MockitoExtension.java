@@ -1,4 +1,4 @@
-package com.mercadolibre.joao_magalhaes.util;
+package com.mercadolibre.joao_magalhaes.application.util;
 
 import java.lang.reflect.Parameter;
 import org.junit.jupiter.api.extension.ExtensionContext;

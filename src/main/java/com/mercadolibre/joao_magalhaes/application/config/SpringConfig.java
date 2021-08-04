@@ -1,4 +1,4 @@
-package com.mercadolibre.joao_magalhaes.config;
+package com.mercadolibre.joao_magalhaes.application.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;

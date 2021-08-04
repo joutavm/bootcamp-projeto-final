@@ -1,7 +1,7 @@
-package com.mercadolibre.joao_magalhaes;
+package com.mercadolibre.joao_magalhaes.application;
 
-import com.mercadolibre.joao_magalhaes.config.SpringConfig;
-import com.mercadolibre.joao_magalhaes.util.ScopeUtils;
+import com.mercadolibre.joao_magalhaes.application.config.SpringConfig;
+import com.mercadolibre.joao_magalhaes.application.util.ScopeUtils;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
