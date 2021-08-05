@@ -3,10 +3,12 @@ package com.mercadolibre.joao_magalhaes.domain.dtos.mapper;
 import com.mercadolibre.joao_magalhaes.domain.dtos.view.StockView;
 import com.mercadolibre.joao_magalhaes.domain.model.InboundOrder;
 import com.mercadolibre.joao_magalhaes.domain.model.Stock;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class StockViewMapper{
 
     public StockView map(Stock source) {

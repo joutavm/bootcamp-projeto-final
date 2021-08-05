@@ -3,12 +3,15 @@ package com.mercadolibre.joao_magalhaes.domain.service.impl;
 import com.mercadolibre.joao_magalhaes.domain.exceptions.ItemNotFoundException;
 import com.mercadolibre.joao_magalhaes.domain.model.Product;
 import com.mercadolibre.joao_magalhaes.domain.repository.ProductRepository;
-import org.eclipse.jetty.http.HttpHeader;
+import com.mercadolibre.joao_magalhaes.domain.service.FindProductService;
+import lombok.RequiredArgsConstructor;
 
-public class ImplFindProduct {
+@RequiredArgsConstructor
+public class ImplFindProduct implements FindProductService {
 
-    ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
+    @Override
     public Product findById(Long id) {
         return productRepository
                 .findById(id)

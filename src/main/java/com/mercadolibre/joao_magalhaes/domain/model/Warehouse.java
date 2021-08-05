@@ -13,7 +13,7 @@ public class Warehouse {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
-    @OneToMany(mappedBy = "warehouse")
+    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
     private List<Section> section;
 
     public Warehouse(String code, List<Section> section) {
