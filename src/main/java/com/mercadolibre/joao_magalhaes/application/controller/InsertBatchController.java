@@ -19,20 +19,20 @@ import java.util.List;
 @RequestMapping("/api/v1/fresh-products/inboundorder/")
 public class InsertBatchController {
 
-    private final CreateOrderService createOrderService;
-
-    private final UpdateStockService updateStockService;
-
-
-    @PostMapping
-    @ResponseStatus(value = HttpStatus.CREATED)
-    public List<StockView> insert(@RequestBody @Valid InboundOrderForm form){
-        return createOrderService.create(form);
-    }
-
-
-    @PutMapping("/{id}")
-    public ResponseEntity<StockView> update(@PathVariable String id, @RequestBody @Valid StockForm stockForm){
-        return ResponseEntity.ok().body(updateStockService.update(id, stockForm));
-    }
+//    private final CreateOrderService createOrderService;
+//
+//    private final UpdateStockService updateStockService;
+//
+//
+//    @PostMapping
+//    @ResponseStatus(value = HttpStatus.CREATED)
+//    public List<StockView> insert(@RequestBody @Valid InboundOrderForm form){
+//        return createOrderService.create(form);
+//    }
+//
+//
+//    @PutMapping("/{id}")
+//    public ResponseEntity<StockView> update(@PathVariable String id, @RequestBody @Valid StockForm stockForm){
+//        return ResponseEntity.ok().body(updateStockService.update(id, stockForm));
+//    }
 }
