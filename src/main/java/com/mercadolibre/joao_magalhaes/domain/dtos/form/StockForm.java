@@ -15,7 +15,7 @@ public class StockForm {
     private Long number;
 
     @NotEmpty @NotNull
-    private String productId;
+    private Long productId;
 
     @NotNull
     private Float currentTemperature;
