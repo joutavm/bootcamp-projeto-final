@@ -18,4 +18,8 @@ public class Warehouse {
     @OneToMany(mappedBy = "warehouse")
     private List<Section> section;
 
+    public Warehouse(String code, List<Section> section) {
+        this.code = code;
+        this.section = section;
+    }
 }

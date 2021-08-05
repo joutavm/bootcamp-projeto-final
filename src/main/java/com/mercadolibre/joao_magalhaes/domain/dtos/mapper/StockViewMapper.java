@@ -11,14 +11,14 @@ public class StockViewMapper{
 
     public StockView map(Stock source) {
         return new StockView(source.getNumber(),
-                source.getProduct(),
+                source.getProduct().getId().toString(),
                 source.getCurrentTemperature(),
                 source.getMinimumTemperature(),
                 source.getInitialQuantity(),
                 source.getCurrentQuantity(),
-                source.getManufacturingDate(),
-                source.getManufacturingTime(),
-                source.getDueDate());
+                source.getManufacturingDate().toString(),
+                source.getManufacturingTime().toString(),
+                source.getDueDate().toString());
     }
 
     public List<StockView> mapOrderInStockList(InboundOrder inboundOrder) {

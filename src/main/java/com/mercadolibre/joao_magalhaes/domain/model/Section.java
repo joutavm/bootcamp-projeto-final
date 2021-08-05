@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 public class Section {
     @Id
     private Long id;
@@ -17,4 +16,10 @@ public class Section {
     private double size;
     @ManyToOne
     private Warehouse warehouse;
+
+  public Section(String code, double size, Warehouse warehouse) {
+        this.code = code;
+        this.size = size;
+        this.warehouse = warehouse;
+    }
 }
