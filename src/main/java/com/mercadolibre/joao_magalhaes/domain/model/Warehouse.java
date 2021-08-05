@@ -10,9 +10,10 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class Warehouse {
     @Id
+    private Long id;
     private String code;
     @OneToMany(mappedBy = "warehouse")
     private List<Section> section;
