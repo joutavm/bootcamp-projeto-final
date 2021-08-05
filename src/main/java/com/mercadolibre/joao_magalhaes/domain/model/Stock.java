@@ -23,11 +23,19 @@ public class Stock {
     private Float minimumTemperature;
     private int initialQuantity;
     private int currentQuantity;
-    private LocalDate manufacturingDate;
-    private LocalDateTime manufacturingTime;
-    private LocalDate dueDate;
+    private String manufacturingDate;
+    private String manufacturingTime;
+    private String dueDate;
 
-    public Stock(Long number, Product product, Float currentTemperature, Float minimumTemperature, int initialQuantity, int currentQuantity, LocalDate manufacturingDate, LocalDateTime manufacturingTime, LocalDate dueDate) {
+    public Stock(Long number,
+                 Product product,
+                 Float currentTemperature,
+                 Float minimumTemperature,
+                 int initialQuantity,
+                 int currentQuantity,
+                 String manufacturingDate,
+                 String manufacturingTime,
+                 String dueDate) {
         this.number = number;
         this.product = product;
         this.currentTemperature = currentTemperature;
