@@ -29,9 +29,9 @@ public class StockViewMapperTest {
                 13F,
                 9,
                 10,
-                LocalDate.now().toString(),
-                LocalDateTime.now().toString(),
-                LocalDate.now().toString());
+                LocalDate.now(),
+                LocalDateTime.now(),
+                LocalDate.now());
         StockView expected = new StockView(1L,"2",
                 12,
                 13,
@@ -63,9 +63,9 @@ public class StockViewMapperTest {
                 13F,
                 9,
                 10,
-                LocalDate.now().toString(),
-                LocalDateTime.now().toString(),
-                LocalDate.now().toString());
+                LocalDate.now(),
+                LocalDateTime.now(),
+                LocalDate.now());
         List<Stock> stockList = new ArrayList<>();
         stockList.add(source);
         Warehouse warehouse = new Warehouse("1234", new ArrayList<>());
@@ -73,7 +73,7 @@ public class StockViewMapperTest {
         List<Section> sectionList = new ArrayList<>();
         sectionList.add(section);
         warehouse.setSection(sectionList);
-        InboundOrder order = new InboundOrder(1234L,"2020-07-07",section,stockList);
+        InboundOrder order = new InboundOrder(1234L,LocalDate.of(2020, 7, 7),section,stockList);
 
         //when
         List<StockView> result = stockViewMapper.mapOrderInStockList(order);

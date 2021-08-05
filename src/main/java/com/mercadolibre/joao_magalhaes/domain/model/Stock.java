@@ -32,9 +32,9 @@ public class Stock {
                  Float minimumTemperature,
                  int initialQuantity,
                  int currentQuantity,
-                 String manufacturingDate,
-                 String manufacturingTime,
-                 String dueDate) {
+                 LocalDate manufacturingDate,
+                 LocalDateTime manufacturingTime,
+                 LocalDate dueDate) {
         this.number = number;
         this.product = product;
         this.currentTemperature = currentTemperature;

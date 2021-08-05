@@ -22,7 +22,7 @@ class OrderFormMapperTest {
     @Test
     void shouldCreateMapWhenTransformValuesToInboundOrder() {
         //Given
-        StockForm form = new StockForm(1L, "1",
+        StockForm form = new StockForm(1L, 1L,
                 12.5f, 12.5f,
                 12, 12,
                 "12-03-2021", "12-03-2021", "12-03-2021");

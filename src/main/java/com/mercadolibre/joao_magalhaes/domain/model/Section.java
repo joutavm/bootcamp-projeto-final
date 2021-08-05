@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Section {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

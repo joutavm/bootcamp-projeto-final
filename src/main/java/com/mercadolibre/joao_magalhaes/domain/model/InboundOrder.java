@@ -15,7 +15,7 @@ import java.util.List;
 public class InboundOrder {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderNumber;
-    private String orderDate;
+    private LocalDate orderDate;
     @ManyToOne
     private Section section;
     @OneToMany
@@ -26,7 +26,7 @@ public class InboundOrder {
         this.section = section;
         this.stockList = stockList;
     }
-    public InboundOrder(Long orderNumber, String orderDate, Section section, List<Stock> stockList) {
+    public InboundOrder(Long orderNumber, LocalDate orderDate, Section section, List<Stock> stockList) {
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
         this.section = section;
