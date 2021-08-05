@@ -39,4 +39,16 @@ public class StockForm {
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private String dueDate;
+
+    public StockForm(Long number, String productId, Float currentTemperature, Float minimumTemperature, int initialQuantity, int currentQuantity, String manufacturingDate, String manufacturingTime, String dueDate) {
+        this.number = number;
+        this.productId = productId;
+        this.currentTemperature = currentTemperature;
+        this.minimumTemperature = minimumTemperature;
+        this.initialQuantity = initialQuantity;
+        this.currentQuantity = currentQuantity;
+        this.manufacturingDate = manufacturingDate;
+        this.manufacturingTime = manufacturingTime;
+        this.dueDate = dueDate;
+    }
 }
