@@ -23,9 +23,10 @@ public class Stock {
     private Float minimumTemperature;
     private int initialQuantity;
     private int currentQuantity;
-    private String manufacturingDate;
-    private String manufacturingTime;
-    private String dueDate;
+    private LocalDate manufacturingDate;
+    private LocalDateTime manufacturingTime;
+    private LocalDate dueDate;
+
 
     public Stock(Long number,
                  Product product,
