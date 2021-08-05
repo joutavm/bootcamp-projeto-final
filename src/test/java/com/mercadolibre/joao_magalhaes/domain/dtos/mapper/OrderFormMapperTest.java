@@ -1,7 +1,7 @@
 package com.mercadolibre.joao_magalhaes.domain.dtos.mapper;
 
 import com.mercadolibre.joao_magalhaes.domain.dtos.form.InboundOrderForm;
-import com.mercadolibre.joao_magalhaes.domain.dtos.form.SectionFrom;
+import com.mercadolibre.joao_magalhaes.domain.dtos.form.SectionForm;
 import com.mercadolibre.joao_magalhaes.domain.dtos.form.StockForm;
 import com.mercadolibre.joao_magalhaes.domain.model.*;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ class OrderFormMapperTest {
                 12, 12,
                 "12-03-2021", "12-03-2021", "12-03-2021");
 
-        InboundOrderForm inboundOrderForm = new InboundOrderForm(new SectionFrom("30", "12"),
+        InboundOrderForm inboundOrderForm = new InboundOrderForm(new SectionForm("30", "12"),
                 List.of(form, form), "2021-04-12");
 
         Stock stock = new Stock(1L, new Product(1L, "Cheese"),

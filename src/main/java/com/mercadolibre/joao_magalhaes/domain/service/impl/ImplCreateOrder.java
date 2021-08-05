@@ -2,6 +2,7 @@ package com.mercadolibre.joao_magalhaes.domain.service.impl;
 
 
 import com.mercadolibre.joao_magalhaes.domain.dtos.form.InboundOrderForm;
+import com.mercadolibre.joao_magalhaes.domain.dtos.form.StockForm;
 import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.OrderFormMapper;
 import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StockFormMapper;
 import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StockViewMapper;
@@ -18,7 +19,11 @@ import com.mercadolibre.joao_magalhaes.domain.service.RetrieveSectionService;
 import lombok.RequiredArgsConstructor;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -28,26 +33,45 @@ public class ImplCreateOrder implements CreateOrderService {
     private final StockViewMapper stockViewMapper;
     private final OrderFormMapper orderFormMapper;
     private final RetrieveSectionService retrieveSectionService;
+    private final ProductRepository productRepository;
     private final StockFormMapper stockFormMapper;
     private final FindProductService findProductService;
 
 
     @Override @Transactional
-    public List<StockView> create(InboundOrderForm form) {
+    public InboundOrder create(InboundOrderForm form) {
         Section section = retrieveSectionService.findByNameAndWareHouse(
                 form.getSection().getSectionCode(),
                 form.getSection().getWarehouseCode());
 
 
-        List<Stock> stockList = form.getBatchStock().stream().map(e ->
-            stockFormMapper.map(e, findProductService.findById(e.getProductId()))
-        ).collect(Collectors.toList());
+//        List<Stock> stockList = form.getBatchStock().stream().map(e ->
+//            stockFormMapper.map(e, findProductService.findById(e.getProductId()))
+//        ).collect(Collectors.toList());
 
-        InboundOrder order = orderFormMapper.map(form, stockList, section);
+        List<Long> longList = form.getBatchStock().stream().map(StockForm::getProductId).collect(Collectors.toList());
+        List<Product> productList = new ArrayList<>();
+
+        longList.forEach( item -> {
+            Optional<Product> product = productRepository.findById(item);
+            productList.add(product.get());
+        } );
+
+        List<Stock> stockList = new ArrayList<>();
+
+        InboundOrder order = new InboundOrder(LocalDate.now(), section, stockList);
+
+        productList.forEach( item ->{
+            Stock estoque = new Stock(item, order);
+         stockList.add(estoque);
+        });
+
+//        InboundOrder order = orderFormMapper.map(form, stockList, section);
+
 
         InboundOrder inboundOrder = orderRepository.save(order);
 
-        return stockViewMapper.mapOrderInStockList(inboundOrder);
+        return inboundOrder;
 
     }
 }

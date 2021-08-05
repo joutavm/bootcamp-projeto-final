@@ -27,6 +27,10 @@ public class Stock {
     private LocalDateTime manufacturingTime;
     private LocalDate dueDate;
 
+    public Stock(Product product, InboundOrder inboundOrder) {
+        this.product = product;
+        this.inboundOrder = inboundOrder;
+    }
 
     public Stock(Long number,
                  Product product,

@@ -3,6 +3,7 @@ package com.mercadolibre.joao_magalhaes.application.controller;
 
 import com.mercadolibre.joao_magalhaes.domain.dtos.form.InboundOrderForm;
 import com.mercadolibre.joao_magalhaes.domain.dtos.view.StockView;
+import com.mercadolibre.joao_magalhaes.domain.model.InboundOrder;
 import com.mercadolibre.joao_magalhaes.domain.service.CreateOrderService;
 import com.mercadolibre.joao_magalhaes.domain.service.UpdateStockService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class InsertBatchController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public List<StockView> insert(@RequestBody @Valid InboundOrderForm form){
+    public InboundOrder insert(@RequestBody @Valid InboundOrderForm form){
         return createOrderService.create(form);
     }
 
