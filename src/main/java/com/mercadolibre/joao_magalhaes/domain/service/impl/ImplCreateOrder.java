@@ -17,6 +17,7 @@ import com.mercadolibre.joao_magalhaes.domain.service.FindProductService;
 import com.mercadolibre.joao_magalhaes.domain.service.RetrieveSectionService;
 import lombok.RequiredArgsConstructor;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +32,7 @@ public class ImplCreateOrder implements CreateOrderService {
     private final FindProductService findProductService;
 
 
-    @Override
+    @Override @Transactional
     public List<StockView> create(InboundOrderForm form) {
         Section section = retrieveSectionService.findByNameAndWareHouse(
                 form.getSection().getSectionCode(),

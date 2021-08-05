@@ -17,7 +17,8 @@ import java.util.List;
 public class InboundOrderForm {
 
     @NotNull
-    private SectionFrom section;
+    @JsonProperty
+    private SectionForm section;
 
     @JsonProperty("batch_stock")
     @NotNull
@@ -26,7 +27,5 @@ public class InboundOrderForm {
     @JsonProperty("order_date")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private String orderDate;
-
-
 
 }

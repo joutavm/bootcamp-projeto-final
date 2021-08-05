@@ -18,7 +18,7 @@ public class InboundOrder {
     private LocalDate orderDate;
     @ManyToOne
     private Section section;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "inboundOrder", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<Stock> stockList;
 
     public InboundOrder(LocalDate orderDate, Section section, List<Stock> stockList) {

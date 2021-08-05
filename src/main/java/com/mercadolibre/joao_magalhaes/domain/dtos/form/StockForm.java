@@ -1,5 +1,6 @@
 package com.mercadolibre.joao_magalhaes.domain.dtos.form;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,22 +15,31 @@ import javax.validation.constraints.NotNull;
 public class StockForm {
 
     @NotNull
+    @JsonProperty
     private Long number;
     @NotEmpty @NotNull
+    @JsonProperty("productId")
     private Long productId;
     @NotNull
+    @JsonProperty("currentTemperature")
     private Float currentTemperature;
     @NotNull
+    @JsonProperty("minimumTemperature")
     private Float minimumTemperature;
     @NotNull
+    @JsonProperty("initialQuantity")
     private int initialQuantity;
     @NotNull
+    @JsonProperty("currentQuantity")
     private int currentQuantity;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @JsonProperty("manufacturingDate")
     private String manufacturingDate;
     @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
+    @JsonProperty("manufacturingTime")
     private String manufacturingTime;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @JsonProperty("dueDate")
     private String dueDate;
 
     public StockForm(Long number, Long productId, Float currentTemperature, Float minimumTemperature, int initialQuantity, int currentQuantity, String manufacturingDate, String manufacturingTime, String dueDate) {

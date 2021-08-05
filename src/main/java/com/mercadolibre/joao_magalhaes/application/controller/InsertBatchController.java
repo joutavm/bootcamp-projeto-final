@@ -4,6 +4,7 @@ package com.mercadolibre.joao_magalhaes.application.controller;
 import com.mercadolibre.joao_magalhaes.domain.dtos.form.InboundOrderForm;
 import com.mercadolibre.joao_magalhaes.domain.dtos.view.StockView;
 import com.mercadolibre.joao_magalhaes.domain.service.CreateOrderService;
+import com.mercadolibre.joao_magalhaes.domain.service.UpdateStockService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

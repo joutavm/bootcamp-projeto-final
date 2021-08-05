@@ -17,6 +17,8 @@ public class Stock {
     private Long number;
     @ManyToOne
     private Product product;
+    @ManyToOne
+    private InboundOrder inboundOrder;
     private Float currentTemperature;
     private Float minimumTemperature;
     private int initialQuantity;

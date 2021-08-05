@@ -13,14 +13,17 @@ import java.time.format.DateTimeFormatter;
 public class StockFormMapper {
 
     public Stock map(StockForm stockForm, Product product){
-        return new Stock(stockForm.getNumber(),
-                product,
-                stockForm.getCurrentTemperature(),
-                stockForm.getMinimumTemperature(),
-                stockForm.getInitialQuantity(),
-                stockForm.getCurrentQuantity(),
-                LocalDate.parse(stockForm.getManufacturingDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")),
-                LocalDateTime.parse(stockForm.getManufacturingTime(), DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
-                LocalDate.parse(stockForm.getDueDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        Stock stock = new Stock();
+        stock.setNumber(stockForm.getNumber());
+        stock.setProduct(product);
+        stock.setCurrentQuantity(stockForm.getCurrentQuantity());
+        stock.setCurrentTemperature(stockForm.getCurrentTemperature());
+        stock.setMinimumTemperature(stockForm.getMinimumTemperature());
+        stock.setInitialQuantity(stockForm.getInitialQuantity());
+        stock.setCurrentTemperature(stockForm.getCurrentTemperature());
+        stock.setManufacturingDate(LocalDate.parse(stockForm.getManufacturingDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        stock.setManufacturingTime(LocalDateTime.parse(stockForm.getManufacturingTime(), DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
+        stock.setDueDate(LocalDate.parse(stockForm.getDueDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        return stock;
     }
 }
