@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Section {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
     private double size;
