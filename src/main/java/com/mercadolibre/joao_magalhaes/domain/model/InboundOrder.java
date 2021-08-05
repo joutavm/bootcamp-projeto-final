@@ -21,6 +21,11 @@ public class InboundOrder {
     @OneToMany
     private List<Stock> stockList;
 
+    public InboundOrder(LocalDate orderDate, Section section, List<Stock> stockList) {
+        this.orderDate = orderDate;
+        this.section = section;
+        this.stockList = stockList;
+    }
     public InboundOrder(Long orderNumber, String orderDate, Section section, List<Stock> stockList) {
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
