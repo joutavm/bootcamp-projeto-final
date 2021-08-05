@@ -12,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Section {
     @Id
+    private Long id;
     private String code;
     private double size;
     @ManyToOne

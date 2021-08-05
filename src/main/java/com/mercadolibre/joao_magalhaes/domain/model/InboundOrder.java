@@ -20,5 +20,4 @@ public class InboundOrder {
     private Section section;
     @OneToMany
     private List<Stock> stockList;
-
 }
