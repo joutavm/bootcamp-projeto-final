@@ -318,7 +318,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>runtime</scope>
+            <scope>local</scope>
         </dependency>
         <!-- Meli srping boot -->
         <dependency>

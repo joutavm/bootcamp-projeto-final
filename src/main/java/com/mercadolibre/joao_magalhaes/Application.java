@@ -1,4 +1,4 @@
-package com.mercadolibre.joao_magalhaes.application;
+package com.mercadolibre.joao_magalhaes;
 
 import com.mercadolibre.joao_magalhaes.application.config.SpringConfig;
 import com.mercadolibre.joao_magalhaes.application.util.ScopeUtils;
