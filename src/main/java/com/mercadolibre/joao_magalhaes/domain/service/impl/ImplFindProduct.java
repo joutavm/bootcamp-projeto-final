@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public class ImplFindProduct implements FindProductService {
 
     private final ProductRepository productRepository;
-    private final ProductViewMapper productViewMapper;
 
     @Override
     public Product findById(Long id) {
@@ -26,12 +25,12 @@ public class ImplFindProduct implements FindProductService {
     }
 
     @Override
-    public List<ProductView> findAll() {
+    public List<Product> findAll() {
         List<Product> productList = productRepository.findAll();
         if(productList.isEmpty()){
             throw new ItemNotFoundException("Not Found", "List of Products is empty!", 404);
         }
 
-        return productList.stream().map(e -> productViewMapper.map(e)).collect(Collectors.toList());
+        return productList;
     }
 }
