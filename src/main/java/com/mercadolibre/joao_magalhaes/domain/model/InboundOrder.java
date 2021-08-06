@@ -18,7 +18,7 @@ public class InboundOrder {
     private LocalDate orderDate;
     @ManyToOne
     private Section section;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Stock> stockList;
 
     public InboundOrder(LocalDate orderDate, Section section, List<Stock> stockList) {

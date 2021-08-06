@@ -14,9 +14,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class StockForm {
 
-    @NotNull
-    @JsonProperty
-    private Long number;
     @NotEmpty @NotNull
     @JsonProperty("productId")
     private Long productId;
@@ -46,7 +43,6 @@ public class StockForm {
     private String dueDate;
 
     public StockForm(Long number, Long productId, Float currentTemperature, Float minimumTemperature, int initialQuantity, int currentQuantity, String manufacturingDate, String manufacturingTime, String dueDate) {
-        this.number = number;
         this.productId = productId;
         this.currentTemperature = currentTemperature;
         this.minimumTemperature = minimumTemperature;

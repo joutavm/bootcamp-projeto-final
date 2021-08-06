@@ -43,7 +43,6 @@ public class ImplCreateOrder implements CreateOrderService {
             stockFormMapper.map(e, findProductService.findById(e.getProductId()))
         ).collect(Collectors.toList());
 
-        stockRepostitory.saveAll(stockList);
 
         InboundOrder order = orderFormMapper.map(form, stockList, section);
 

@@ -14,7 +14,6 @@ public class StockFormMapper {
 
     public Stock map(StockForm stockForm, Product product){
         Stock stock = new Stock();
-        stock.setNumber(stockForm.getNumber());
         stock.setProduct(product);
         stock.setCurrentQuantity(stockForm.getCurrentQuantity());
         stock.setCurrentTemperature(stockForm.getCurrentTemperature());
