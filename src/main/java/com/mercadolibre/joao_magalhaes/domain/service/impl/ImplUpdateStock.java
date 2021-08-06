@@ -1,10 +1,7 @@
 package com.mercadolibre.joao_magalhaes.domain.service.impl;
 
 import com.mercadolibre.joao_magalhaes.domain.dtos.form.PutInboundForm;
-import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.OrderFormMapper;
-import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.PutOrderFormMapper;
-import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.PutstockFormMapper;
-import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StockViewMapper;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.*;
 import com.mercadolibre.joao_magalhaes.domain.dtos.view.StockView;
 import com.mercadolibre.joao_magalhaes.domain.exceptions.ItemNotFoundException;
 import com.mercadolibre.joao_magalhaes.domain.model.InboundOrder;
@@ -27,10 +24,10 @@ import java.util.stream.Collectors;
 public class ImplUpdateStock implements UpdateStockService {
 
     private final RetrieveSectionService retrieveSectionService;
-    private final PutOrderFormMapper putOrderFormMapper;
-    private final OrderRepository orderRepository;
     private final StockViewMapper stockViewMapper;
     private final FindOrderService findOrderService;
+    private final FindProductService findProductService;
+    private final StockFormMapper stockFormMapper;
 
 
 
@@ -49,7 +46,7 @@ public class ImplUpdateStock implements UpdateStockService {
             if(stock.isEmpty()){
                 throw new ItemNotFoundException( "Not Found", "Batch number not found in order.", 404);
             }
-            stock.get().setDueDate(); //... trabalho do mapper.
+            stockFormMapper.map(stock.get(), item,findProductService.findById(item.getProductId()));
 
         });
 
@@ -58,7 +55,7 @@ public class ImplUpdateStock implements UpdateStockService {
                 putInboundForm.getSection().getWarehouseCode());
 
         //Pedido.setSection talala...
-        putOrderFormMapper.map(order, putInboundForm, section);
+        order.setSection(section);
 
         return stockViewMapper.mapOrderInStockList(order);
 

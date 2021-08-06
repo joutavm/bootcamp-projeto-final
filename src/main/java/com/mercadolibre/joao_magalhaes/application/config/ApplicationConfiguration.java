@@ -7,12 +7,8 @@ import com.mercadolibre.joao_magalhaes.domain.repository.OrderRepository;
 import com.mercadolibre.joao_magalhaes.domain.repository.ProductRepository;
 import com.mercadolibre.joao_magalhaes.domain.repository.SectionRepository;
 import com.mercadolibre.joao_magalhaes.domain.repository.StockRepostitory;
-import com.mercadolibre.joao_magalhaes.domain.service.CreateOrderService;
-import com.mercadolibre.joao_magalhaes.domain.service.FindProductService;
-import com.mercadolibre.joao_magalhaes.domain.service.RetrieveSectionService;
-import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplCreateOrder;
-import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplFindProduct;
-import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplRetrieveSectionService;
+import com.mercadolibre.joao_magalhaes.domain.service.*;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,9 +22,9 @@ public class ApplicationConfiguration {
             OrderFormMapper orderFormMapper,
             RetrieveSectionService retrieveSectionService,
             StockFormMapper stockFormMapper,
-            FindProductService findProductService,
-            StockRepostitory stockRepository){
-        return new ImplCreateOrder(orderRepository, stockViewMapper, orderFormMapper, retrieveSectionService, stockFormMapper, findProductService, stockRepository);
+            FindProductService findProductService)
+    {
+        return new ImplCreateOrder(orderRepository, stockViewMapper, orderFormMapper, retrieveSectionService, stockFormMapper, findProductService);
     }
 
     @Bean
@@ -39,6 +35,17 @@ public class ApplicationConfiguration {
     @Bean
     public FindProductService findProductService(ProductRepository productRepository){
         return new ImplFindProduct(productRepository);
+    }
+
+    @Bean
+    public UpdateStockService updateStockService(RetrieveSectionService retrieveSectionService, StockViewMapper stockViewMapper, FindOrderService findOrderService, FindProductService findProductService,StockFormMapper stockFormMapper){
+        return new ImplUpdateStock(retrieveSectionService, stockViewMapper, findOrderService, findProductService,stockFormMapper);
+    }
+
+    @Bean
+    public FindOrderService findOrderService(OrderRepository orderRepository){
+        return new ImplFindOrder(orderRepository);
+
     }
 
 }
