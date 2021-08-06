@@ -9,6 +9,12 @@ import com.mercadolibre.joao_magalhaes.domain.repository.SectionRepository;
 import com.mercadolibre.joao_magalhaes.domain.repository.StockRepostitory;
 import com.mercadolibre.joao_magalhaes.domain.service.*;
 import com.mercadolibre.joao_magalhaes.domain.service.impl.*;
+import com.mercadolibre.joao_magalhaes.domain.service.CreateOrderService;
+import com.mercadolibre.joao_magalhaes.domain.service.FindProductService;
+import com.mercadolibre.joao_magalhaes.domain.service.RetrieveSectionService;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplCreateOrder;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplFindProduct;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplRetrieveSectionService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -22,8 +28,7 @@ public class ApplicationConfiguration {
             OrderFormMapper orderFormMapper,
             RetrieveSectionService retrieveSectionService,
             StockFormMapper stockFormMapper,
-            FindProductService findProductService)
-    {
+            FindProductService findProductService){
         return new ImplCreateOrder(orderRepository, stockViewMapper, orderFormMapper, retrieveSectionService, stockFormMapper, findProductService);
     }
 

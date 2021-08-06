@@ -20,3 +20,7 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+
+jwt:
+  secret: ${TOKEN}
+  expiration: 86400000
