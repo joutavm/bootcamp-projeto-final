@@ -38,7 +38,7 @@ public class ImplCreateOrder implements CreateOrderService {
 
 
         List<Stock> stockList = form.getBatchStock().stream().map(e ->
-            stockFormMapper.map(e, findProductService.findById(e.getProductId()))
+            stockFormMapper.updateStockByStockFormAndProduct(e, findProductService.findById(e.getProductId()))
         ).collect(Collectors.toList());
 
 
