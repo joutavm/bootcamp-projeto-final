@@ -4,9 +4,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${DB_MYSQL_DESAENV04_FRIOSDB_FRIOSDB_ENDPOINT}
-    username: friosdb_WPROD
-    password: ${DB_MYSQL_DESAENV04_FRIOSDB_FRIOSDB_WPROD}
+    url: jdbc:mysql://proxysql.master.meliseginf.com:6612/friosdb?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8
+    username: ${SECRET_DB_USER}
+    password: ${SECRET_DB_PASS}
     initialization-mode: always
 
   jpa:
@@ -18,5 +18,5 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
 jwt:
-  secret: ${TOKEN}
+  secret: ${SECRET_TOKEN}
   expiration: 86400000
