@@ -1,6 +1,8 @@
 package com.mercadolibre.joao_magalhaes.application.config;
 
+import com.mercadolibre.joao_magalhaes.application.controller.PurchaseController;
 import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.OrderFormMapper;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.ProductViewMapper;
 import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StockFormMapper;
 import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StockViewMapper;
 import com.mercadolibre.joao_magalhaes.domain.repository.OrderRepository;
@@ -36,8 +38,8 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public FindProductService findProductService(ProductRepository productRepository){
-        return new ImplFindProduct(productRepository);
+    public FindProductService findProductService(ProductRepository productRepository, ProductViewMapper productViewMapper){
+        return new ImplFindProduct(productRepository, productViewMapper);
     }
 
 }
