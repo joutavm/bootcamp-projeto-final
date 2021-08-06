@@ -10,7 +10,6 @@ import com.mercadolibre.joao_magalhaes.domain.model.InboundOrder;
 import com.mercadolibre.joao_magalhaes.domain.model.Section;
 import com.mercadolibre.joao_magalhaes.domain.model.Stock;
 import com.mercadolibre.joao_magalhaes.domain.repository.OrderRepository;
-import com.mercadolibre.joao_magalhaes.domain.repository.StockRepostitory;
 import com.mercadolibre.joao_magalhaes.domain.service.CreateOrderService;
 import com.mercadolibre.joao_magalhaes.domain.service.FindProductService;
 import com.mercadolibre.joao_magalhaes.domain.service.RetrieveSectionService;
@@ -29,7 +28,6 @@ public class ImplCreateOrder implements CreateOrderService {
     private final RetrieveSectionService retrieveSectionService;
     private final StockFormMapper stockFormMapper;
     private final FindProductService findProductService;
-    private final StockRepostitory stockRepostitory;
 
 
     @Override @Transactional
