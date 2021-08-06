@@ -3,6 +3,7 @@ package com.mercadolibre.joao_magalhaes.domain.dtos.form;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,10 +13,12 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 public class InboundOrderForm {
 
     @NotNull
-    private SectionFrom section;
+    @JsonProperty
+    private SectionForm section;
 
     @JsonProperty("batch_stock")
     @NotNull
@@ -24,7 +27,5 @@ public class InboundOrderForm {
     @JsonProperty("order_date")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private String orderDate;
-
-
 
 }

@@ -1,25 +1,30 @@
 package com.mercadolibre.joao_magalhaes.domain.dtos.view;
 
-import com.mercadolibre.joao_magalhaes.domain.model.Product;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-@AllArgsConstructor
 @Getter
 public class StockView {
 
     private Long number;
-    private Product product;
-    private Float currentTemperature;
-    private Float minimumTemperature;
+    private String productId;
+    private float currentTemperature;
+    private float minimumTemperature;
     private int initialQuantity;
     private int currentQuantity;
-    private LocalDate manufacturingDate;
-    private LocalDateTime manufacturingTime;
-    private LocalDate dueDate;
+    private String manufacturingDate;
+    private String manufacturingTime;
+    private String dueDate;
 
-
+    public StockView(Long number, String productId, float currentTemperature, float minimumTemperature, int initialQuantity, int currentQuantity, String manufacturingDate, String manufacturingTime, String dueDate) {
+        this.number = number;
+        this.productId = productId;
+        this.currentTemperature = currentTemperature;
+        this.minimumTemperature = minimumTemperature;
+        this.initialQuantity = initialQuantity;
+        this.currentQuantity = currentQuantity;
+        this.manufacturingDate = manufacturingDate;
+        this.manufacturingTime = manufacturingTime;
+        this.dueDate = dueDate;
+    }
 }
