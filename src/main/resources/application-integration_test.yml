@@ -1,2 +1,6 @@
 # Properties file for integration tests
 # Overrides application.yml default properties
+
+jwt:
+  secret: TESTTEST
+  expiration: 86400000
