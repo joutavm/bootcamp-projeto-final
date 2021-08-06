@@ -17,8 +17,6 @@ public class Stock {
     private Long number;
     @ManyToOne
     private Product product;
-    @ManyToOne
-    private InboundOrder inboundOrder;
     private Float currentTemperature;
     private Float minimumTemperature;
     private int initialQuantity;
@@ -29,7 +27,6 @@ public class Stock {
 
     public Stock(Product product, InboundOrder inboundOrder) {
         this.product = product;
-        this.inboundOrder = inboundOrder;
     }
 
     public Stock(Long number,

@@ -6,6 +6,7 @@ import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StockViewMapper;
 import com.mercadolibre.joao_magalhaes.domain.repository.OrderRepository;
 import com.mercadolibre.joao_magalhaes.domain.repository.ProductRepository;
 import com.mercadolibre.joao_magalhaes.domain.repository.SectionRepository;
+import com.mercadolibre.joao_magalhaes.domain.repository.StockRepostitory;
 import com.mercadolibre.joao_magalhaes.domain.service.CreateOrderService;
 import com.mercadolibre.joao_magalhaes.domain.service.FindProductService;
 import com.mercadolibre.joao_magalhaes.domain.service.RetrieveSectionService;
@@ -25,9 +26,9 @@ public class ApplicationConfiguration {
             OrderFormMapper orderFormMapper,
             RetrieveSectionService retrieveSectionService,
             StockFormMapper stockFormMapper,
-            ProductRepository productRepository,
-            FindProductService findProductService){
-        return new ImplCreateOrder(orderRepository, stockViewMapper, orderFormMapper, retrieveSectionService, productRepository, stockFormMapper, findProductService);
+            FindProductService findProductService,
+            StockRepostitory stockRepository){
+        return new ImplCreateOrder(orderRepository, stockViewMapper, orderFormMapper, retrieveSectionService, stockFormMapper, findProductService, stockRepository);
     }
 
     @Bean

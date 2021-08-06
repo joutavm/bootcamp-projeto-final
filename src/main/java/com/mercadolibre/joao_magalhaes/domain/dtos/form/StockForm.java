@@ -32,12 +32,15 @@ public class StockForm {
     @NotNull
     @JsonProperty("currentQuantity")
     private int currentQuantity;
+    @NotNull
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonProperty("manufacturingDate")
     private String manufacturingDate;
+    @NotNull
     @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
     @JsonProperty("manufacturingTime")
     private String manufacturingTime;
+    @NotNull
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonProperty("dueDate")
     private String dueDate;
