@@ -7,18 +7,15 @@ import com.mercadolibre.joao_magalhaes.domain.exceptions.ItemNotFoundException;
 import com.mercadolibre.joao_magalhaes.domain.model.InboundOrder;
 import com.mercadolibre.joao_magalhaes.domain.model.Section;
 import com.mercadolibre.joao_magalhaes.domain.model.Stock;
-import com.mercadolibre.joao_magalhaes.domain.repository.OrderRepository;
 import com.mercadolibre.joao_magalhaes.domain.service.FindOrderService;
 import com.mercadolibre.joao_magalhaes.domain.service.FindProductService;
 import com.mercadolibre.joao_magalhaes.domain.service.RetrieveSectionService;
 import com.mercadolibre.joao_magalhaes.domain.service.UpdateStockService;
 import lombok.RequiredArgsConstructor;
-import org.eclipse.jetty.util.Uptime;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class ImplUpdateStock implements UpdateStockService {
@@ -46,7 +43,7 @@ public class ImplUpdateStock implements UpdateStockService {
             if(stock.isEmpty()){
                 throw new ItemNotFoundException( "Not Found", "Batch number not found in order.", 404);
             }
-            stockFormMapper.map(stock.get(), item,findProductService.findById(item.getProductId()));
+            stockFormMapper.updateStockByStockFormAndProduct(stock.get(), item,findProductService.findById(item.getProductId()));
 
         });
 

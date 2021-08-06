@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 @Component
 public class StockFormMapper {
 
-    public Stock map(StockForm stockForm, Product product){
+    public Stock updateStockByStockFormAndProduct(StockForm stockForm, Product product){
         Stock stock = new Stock();
         stock.setProduct(product);
         stock.setCurrentQuantity(stockForm.getCurrentQuantity());
@@ -28,7 +28,7 @@ public class StockFormMapper {
         return stock;
     }
 
-    public void map(Stock stock, PutStockForm stockForm, Product produto){
+    public void updateStockByStockFormAndProduct(Stock stock, PutStockForm stockForm, Product produto){
         stock.setProduct(produto);
         stock.setCurrentQuantity(stockForm.getCurrentQuantity());
         stock.setCurrentTemperature(stockForm.getCurrentTemperature());
