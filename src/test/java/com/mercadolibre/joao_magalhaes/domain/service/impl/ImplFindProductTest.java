@@ -32,12 +32,9 @@ class ImplFindProductTest {
     @Mock
     private ProductRepository productRepository;
 
-    @Mock
-    private ProductViewMapper productViewMapper;
-
     @BeforeEach
     void setup(){
-        implFindProduct = new ImplFindProduct(productRepository, productViewMapper);
+        implFindProduct = new ImplFindProduct(productRepository);
     }
 
     @Test
@@ -69,15 +66,12 @@ class ImplFindProductTest {
         // given
         Product p1 = new Product(Long.valueOf(1), "Cheese", 2.0, CategoryProductEnum.FS);
 
-        ProductView p1View = new ProductView("Cheese", 2.0, CategoryProductEnum.FS.toString());
-
-        List<ProductView> expect = new ArrayList();
-        expect.add(p1View);
+        List<Product> expect = new ArrayList();
+        expect.add(p1);
 
         // when
         when(productRepository.findAll()).thenReturn(List.of(p1));
-        when(productViewMapper.map(any())).thenReturn(p1View);
-        List<ProductView> result = implFindProduct.findAll();
+        List<Product> result = implFindProduct.findAll();
 
         // Then
         assertEquals(expect.get(0), result.get(0));
