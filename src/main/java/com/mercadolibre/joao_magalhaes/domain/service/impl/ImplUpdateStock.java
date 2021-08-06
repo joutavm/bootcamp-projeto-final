@@ -11,10 +11,12 @@ import com.mercadolibre.joao_magalhaes.domain.model.InboundOrder;
 import com.mercadolibre.joao_magalhaes.domain.model.Section;
 import com.mercadolibre.joao_magalhaes.domain.model.Stock;
 import com.mercadolibre.joao_magalhaes.domain.repository.OrderRepository;
+import com.mercadolibre.joao_magalhaes.domain.service.FindOrderService;
 import com.mercadolibre.joao_magalhaes.domain.service.FindProductService;
 import com.mercadolibre.joao_magalhaes.domain.service.RetrieveSectionService;
 import com.mercadolibre.joao_magalhaes.domain.service.UpdateStockService;
 import lombok.RequiredArgsConstructor;
+import org.eclipse.jetty.util.Uptime;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -28,14 +30,14 @@ public class ImplUpdateStock implements UpdateStockService {
     private final PutOrderFormMapper putOrderFormMapper;
     private final OrderRepository orderRepository;
     private final StockViewMapper stockViewMapper;
+    private final FindOrderService findOrderService;
 
 
 
     @Override @Transactional
     public List<StockView> update(PutInboundForm putInboundForm) {
-        //Achar o pedido
-        // TODO: Incapsular em um service. (FindProductService)
-        InboundOrder order = orderRepository.findById(putInboundForm.getOrderNumber()).get();
+
+        InboundOrder order = findOrderService.findById(putInboundForm.getOrderNumber());
 
         List<Stock> stockList = order.getStockList();
 
@@ -57,8 +59,6 @@ public class ImplUpdateStock implements UpdateStockService {
 
         //Pedido.setSection talala...
         putOrderFormMapper.map(order, putInboundForm, section);
-
-       // InboundOrder response = orderRepository.save(order);
 
         return stockViewMapper.mapOrderInStockList(order);
 
