@@ -26,9 +26,8 @@ public class ApplicationConfiguration {
             OrderFormMapper orderFormMapper,
             RetrieveSectionService retrieveSectionService,
             StockFormMapper stockFormMapper,
-            FindProductService findProductService,
-            StockRepostitory stockRepository){
-        return new ImplCreateOrder(orderRepository, stockViewMapper, orderFormMapper, retrieveSectionService, stockFormMapper, findProductService, stockRepository);
+            FindProductService findProductService){
+        return new ImplCreateOrder(orderRepository, stockViewMapper, orderFormMapper, retrieveSectionService, stockFormMapper, findProductService);
     }
 
     @Bean
