@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StockRepostitory extends JpaRepository<Stock, Long> {
+    //Find que devolve todos os estoques que tem aquele produto, e ordernar ascendente
 }
