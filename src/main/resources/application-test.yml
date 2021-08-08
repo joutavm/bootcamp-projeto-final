@@ -7,7 +7,8 @@ spring:
     password: ${SECRET_DB_PASS}
 
   jpa:
-    show-sql: false
+    database: mysql
+    show-sql: true
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL8Dialect
