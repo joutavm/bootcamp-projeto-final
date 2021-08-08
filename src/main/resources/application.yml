@@ -7,6 +7,20 @@ spring:
     add-mappings: false # Whether to enable default resource handling.
   mvc:
     throw-exception-if-no-handler-found: true # Whether a "NoHandlerFoundException" should be thrown if no Handler was found to process a request.
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://proxysql.master.meliseginf.com:6612/${SECRET_DB_SCHEMA_NAME}?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&sessionVariables=sql_mode=''
+    username: ${SECRET_DB_USER}
+    password: ${SECRET_DB_PASS}
+    initialization-mode: always
+
+  jpa:
+    open-in-view: true
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.MySQL8Dialect
 
 server:
   compression:
@@ -30,3 +44,7 @@ app:
   title: joao-magalhaes
   description: @project.description@
   version: @project.version@
+
+jwt:
+  secret: ${SECRET_TOKEN}
+  expiration: 86400000

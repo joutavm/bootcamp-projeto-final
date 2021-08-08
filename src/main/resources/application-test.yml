@@ -3,9 +3,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://proxysql.master.meliseginf.com:6612/${DB_SCHEMA_NAME}?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&sessionVariables=sql_mode=''
-    username: ${LOCAL_DB_USER}
-    password: ${LOCAL_DB_PASS}
+    url: jdbc:mysql://proxysql.master.meliseginf.com:6612/${SECRET_DB_SCHEMA_NAME}?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&sessionVariables=sql_mode=''
+    username: ${SECRET_DB_USER}
+    password: ${SECRET_DB_PASS}
     initialization-mode: always
 
   jpa:
