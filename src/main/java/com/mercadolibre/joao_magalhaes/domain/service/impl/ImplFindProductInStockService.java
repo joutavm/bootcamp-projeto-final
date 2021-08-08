@@ -7,6 +7,7 @@ import com.mercadolibre.joao_magalhaes.domain.model.Stock;
 import com.mercadolibre.joao_magalhaes.domain.repository.StockRepostitory;
 import com.mercadolibre.joao_magalhaes.domain.service.FindProductInStockService;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ImplFindProductInStockService implements FindProductInStockService {
@@ -15,21 +16,10 @@ public class ImplFindProductInStockService implements FindProductInStockService 
 
     @Override
     public Stock findProductInStock(BuyProductsForm buyProductsForm) {
-        //findStocks.forEach( item -> {
-        // item.getQuantity <= buyProductsForm.getQuantity()
-        //  return stock
-        //estora execao se der errado
-        // )
-        Optional<Stock> stock = stockRepostitory.findAll().stream().filter(item ->{
-            if(item.getProduct().getId().equals(buyProductsForm.getProductId())){
-                if(item.getCurrentQuantity() >= buyProductsForm.getQuantity()){
-                    return true;
-                }
-            }
-            return false;
+        for (Stock stock : stockRepostitory.findStocksWhereIdMatchesOrderAsc(buyProductsForm.getProductId())) {
+            if(stock.getCurrentQuantity() >= buyProductsForm.getQuantity())
+                return stock;
         }
-        ).findFirst();
-
-        return stock;
+        throw new ItemNotFoundException("404", "Stock Not found", 404);
     }
 }
