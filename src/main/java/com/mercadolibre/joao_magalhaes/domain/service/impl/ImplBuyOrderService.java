@@ -42,7 +42,7 @@ public class ImplBuyOrderService implements CreateBuyOrderService {
                  returnView.put(item.getProductId(), "error");
              }
         });
-        BuyOrder buyOrder = buyOrderFormMapper.map(buyOrderForm);
+        BuyOrder buyOrder = buyOrderFormMapper.map(buyOrderForm, returnView);
         buyOrderRepository.save(buyOrder);
 
         return new BuyOrderView(total, returnView);

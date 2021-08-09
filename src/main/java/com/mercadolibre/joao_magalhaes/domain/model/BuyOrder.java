@@ -21,7 +21,7 @@ public class BuyOrder {
     private Long buyerId;
     @Enumerated(EnumType.STRING)
     private BuyOrderStatusEnum orderStatus;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<CartItem> product;
 
 }
