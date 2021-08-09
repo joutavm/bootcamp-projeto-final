@@ -12,8 +12,8 @@ class PurchaseOrderTest {
 
     @Test
     public void shouldCreateAPurchaseOrderThenReturnDateOrderStatusProductList(){
-        Product product = new Product(Long.valueOf(1), "Cheese", 2.0, CategoryProduct.FS);
-        Product product2 = new Product(Long.valueOf(1), "Pizza", 2.0, CategoryProduct.FS);
+        Product product = new Product(Long.valueOf(1), "Cheese", 2.0, CategoryProductEnum.FS);
+        Product product2 = new Product(Long.valueOf(1), "Pizza", 2.0, CategoryProductEnum.FS);
 
         OrderStatus orderStatus = new OrderStatus();
         PurchaseOrder purchaseOrder = new PurchaseOrder(1L, LocalDate.of(2021,3,12), orderStatus, List.of(product, product2));

@@ -30,7 +30,7 @@ public class PutOrderFormMapperTest {
                 LocalDate.of(2021,10,10).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
 
         List<Stock> inputBatchStock = new ArrayList<>();
-        Stock stock = new Stock(1L, new Product(1L, "Cheese", 2.0, CategoryProduct.FS),
+        Stock stock = new Stock(1L, new Product(1L, "Cheese", 2.0, CategoryProductEnum.FS),
                 12.5f, 12.5f, 12, 12,
                 LocalDate.of(2021,10,10),
                 LocalDateTime.of(2021,10,10, 10, 10),
