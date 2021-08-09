@@ -95,4 +95,30 @@ class ImplFindProductTest {
         assertThrows(ItemNotFoundException.class, () -> implFindProduct.findAll());
     }
 
+    @Test
+    void shouldReturnListProductViewWhenfindAllProductsByCategory() {
+        // Given
+        Product product = new Product(1L, "Cheese", 20.1, CategoryProductEnum.RF);
+        ProductView productView = new ProductView("Cheese", 20.1, "Refrigerado");
+        // When
+        when(productRepository.findByCategory(any())).thenReturn(Optional.of(List.of(product, product)));
+        when(productViewMapper.map(any())).thenReturn(productView);
+        List<ProductView> result = implFindProduct.findAllProductsByCategory("RF");
+
+        // Then
+        assertEquals(product.getName(), result.get(0).getName());
+        assertEquals(product.getPrice(), result.get(0).getPrice());
+        assertEquals(product.getCategory().toString(), result.get(0).getCategory());
+    }
+
+    @Test
+    void shouldReturnNotFoundWhenfindAllProductsByCategoryNotExist() {
+        // Given
+        // When
+        when(productRepository.findByCategory(any())).thenReturn(Optional.of(List.of(new Product())));
+        List<ProductView> result = implFindProduct.findAllProductsByCategory("RF");
+        // Then
+        assertThrows(ItemNotFoundException.class, () -> implFindProduct.findAll());
+    }
+
 }
