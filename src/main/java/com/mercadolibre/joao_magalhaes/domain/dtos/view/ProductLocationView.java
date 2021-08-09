@@ -1,5 +1,6 @@
 package com.mercadolibre.joao_magalhaes.domain.dtos.view;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class ProductLocationView {
     private String sectionCode;
     private String warehouseCode;

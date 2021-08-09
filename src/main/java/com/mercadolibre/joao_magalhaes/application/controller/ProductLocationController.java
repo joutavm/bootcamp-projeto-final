@@ -23,7 +23,6 @@ import java.util.List;
 public class ProductLocationController {
 
     private final ProductLocationService productLocationService;
-    private final StockRepostitory stockRepostitory;
 
     @GetMapping
     public ResponseEntity<List<ProductLocationView>> listById(@RequestParam("querytype") Long id){
