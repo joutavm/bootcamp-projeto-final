@@ -11,4 +11,6 @@ public interface FindProductService {
     List<ProductView> findAll();
 
     Product findById(Long id) throws ItemNotFoundException;
+
+    List<ProductView> findAllProductsByCategory(String category);
 }
