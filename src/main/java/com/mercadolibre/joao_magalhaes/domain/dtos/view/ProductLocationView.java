@@ -1,12 +1,18 @@
 package com.mercadolibre.joao_magalhaes.domain.dtos.view;
 
-import java.time.LocalDate;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+
+@Setter
+@Getter
+@NoArgsConstructor
 public class ProductLocationView {
     private String sectionCode;
     private String warehouseCode;
     private Long productId;
-    private int batchNumber;
+    private Long batchNumber;
     private int currentQuantity;
-    private LocalDate dueDate;
+    private String dueDate;
 }
