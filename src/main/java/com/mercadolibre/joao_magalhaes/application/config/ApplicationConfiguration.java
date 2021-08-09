@@ -2,6 +2,7 @@ package com.mercadolibre.joao_magalhaes.application.config;
 
 import com.mercadolibre.joao_magalhaes.application.controller.PurchaseController;
 import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.*;
+import com.mercadolibre.joao_magalhaes.domain.model.BuyOrder;
 import com.mercadolibre.joao_magalhaes.domain.repository.*;
 import com.mercadolibre.joao_magalhaes.domain.service.*;
 import com.mercadolibre.joao_magalhaes.domain.service.impl.*;
@@ -42,5 +43,18 @@ public class ApplicationConfiguration {
                                                        FindProductService findProductService, BuyOrderFormMapper buyOrderFormMapper, BuyOrderRepository buyOrderRepository){
         return new ImplBuyOrderService(findProductInStockService,findProductService, buyOrderFormMapper, buyOrderRepository);
     }
+
+    @Bean
+    public FindBuyOrderById findBuyOrderById(BuyOrderRepository buyOrderRepository){
+        return new ImplFindBuyOrderById(buyOrderRepository);
+    }
+
+    @Bean
+    public GetBuyOrderProductsService getBuyOrderProductsService(FindBuyOrderById findBuyOrderById,
+            BuyOrderProductsMapper buyOrderProductsMapper){
+        return new ImplGetBuyOrderProducts(findBuyOrderById, buyOrderProductsMapper);
+    }
+
+
 
 }

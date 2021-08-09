@@ -20,7 +20,7 @@ public class BuyOrderFormMapper {
         buyOrder.setOrderStatus(BuyOrderStatusEnum.CR);
         buyOrder.setDate(LocalDate.now());
         buyOrder.setBuyerId(source.getBuyerId());
-        buyOrder.setProduct(getCartItemList(source, products));
+        buyOrder.setCartItems(getCartItemList(source, products));
 
         return buyOrder;
     }

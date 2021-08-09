@@ -17,11 +17,12 @@ public class BuyOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private LocalDate date;
     private Long buyerId;
     @Enumerated(EnumType.STRING)
     private BuyOrderStatusEnum orderStatus;
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<CartItem> product;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CartItem> cartItems;
 
 }
