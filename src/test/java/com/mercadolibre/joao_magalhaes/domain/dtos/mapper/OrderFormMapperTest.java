@@ -28,7 +28,7 @@ class OrderFormMapperTest {
                 "12-03-2021", "12-03-2021", "12-03-2021");
 
         InboundOrderForm inboundOrderForm = new InboundOrderForm(new SectionForm("30", "12"),
-                List.of(form, form), "2021-04-12");
+                List.of(form, form), "12-04-2021");
 
         Stock stock = new Stock(1L, new Product(1L, "Cheese", 2.0, CategoryProduct.FS),
                 12.5f, 12.5f, 12, 12,

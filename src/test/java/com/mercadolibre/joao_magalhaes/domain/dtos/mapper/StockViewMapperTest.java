@@ -1,4 +1,4 @@
-package com.mercadolibre.joao_magalhaes.unit;
+package com.mercadolibre.joao_magalhaes.domain.dtos.mapper;
 
 import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StockViewMapper;
 import com.mercadolibre.joao_magalhaes.domain.dtos.view.StockView;

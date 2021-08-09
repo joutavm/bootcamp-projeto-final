@@ -1,6 +1,8 @@
 # Properties file for local/dev environment
 # You need to configure the environment variable in your IDE, more info in README.md
 # Overrides application.yml default properties
+
+
 spring:
   h2:
     console:
@@ -11,6 +13,8 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+    initialization-mode: always
+    platform: local
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
 
@@ -20,3 +24,7 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+
+jwt:
+  secret: ${SECRET_TOKEN}
+  expiration: 86400000
