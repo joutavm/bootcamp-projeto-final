@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
 @RequiredArgsConstructor
-public class ImplBuyOrderService implements CreateBuyOrderService {
+public class ImplBuyOrderService implements CreateBuyOrderService{
 
     private final FindProductInStockService findProductInStockService;
     private final FindProductService findProductService;
@@ -46,7 +46,5 @@ public class ImplBuyOrderService implements CreateBuyOrderService {
         buyOrderRepository.save(buyOrder);
 
         return new BuyOrderView(total, returnView);
-
-
     }
 }

@@ -56,8 +56,8 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public UpdateOrderService updateOrderService(FindBuyOrderById findBuyOrderById, BuyOrderUpdateMapper buyOrderUpdateMapper){
-        return new ImplUpdateOrderService(findBuyOrderById,buyOrderUpdateMapper);
+    public UpdateOrderService updateOrderService(FindBuyOrderById findBuyOrderById, BuyOrderUpdateMapper buyOrderUpdateMapper, FindProductInStockService findProductInStockService){
+        return new ImplUpdateOrderService(findBuyOrderById,buyOrderUpdateMapper, findProductInStockService);
     }
 
 

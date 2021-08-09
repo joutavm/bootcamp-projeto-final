@@ -13,7 +13,6 @@ import java.util.List;
 @Component
 public class BuyOrderUpdateMapper {
 
-
     public void map(BuyOrder buyOrder, BuyOrderForm buyOrderForm) {
         buyOrder.setOrderStatus(BuyOrderStatusEnum.CR);
         List<CartItem> cartItemList = new ArrayList<>();
