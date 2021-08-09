@@ -460,6 +460,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
         </dependency>
+        <dependency>
+            <groupId>com.fury</groupId>
+            <artifactId>furyutils</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+
 
         <!-- database -->
         <dependency>
