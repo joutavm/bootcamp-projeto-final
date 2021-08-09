@@ -1,3 +1,10 @@
+truncate table product;
+truncate table warehouse;
+truncate table section;
+truncate table profiles;
+truncate table users;
+truncate table users_profiles;
+
 insert into product(name) values('queijo');
 insert into product(name) values('presunto');
 insert into warehouse(code) values('a');
