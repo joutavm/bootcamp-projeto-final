@@ -13,7 +13,6 @@ spring:
     host: DB_MYSQL_DESAENV04_FRIOSDB_FRIOSDB_ENDPOINT
     username: friosdb_WPROD
     password: DB_MYSQL_DESAENV04_FRIOSDB_FRIOSDB_WPROD
-    initialization-mode: always
 
 
 
