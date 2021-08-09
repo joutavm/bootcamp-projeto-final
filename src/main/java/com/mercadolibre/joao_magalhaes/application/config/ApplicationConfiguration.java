@@ -45,8 +45,8 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public FindProductService findProductService(ProductRepository productRepository){
-        return new ImplFindProduct(productRepository);
+    public FindProductService findProductService(ProductRepository productRepository, ProductViewMapper productViewMapper){
+        return new ImplFindProduct(productRepository, productViewMapper);
     }
 
     @Bean

@@ -32,9 +32,11 @@ class ImplFindProductTest {
     @Mock
     private ProductRepository productRepository;
 
+    @Mock
+    private ProductViewMapper productViewMapper;
     @BeforeEach
     void setup(){
-        implFindProduct = new ImplFindProduct(productRepository);
+        implFindProduct = new ImplFindProduct(productRepository, productViewMapper);
     }
 
     @Test

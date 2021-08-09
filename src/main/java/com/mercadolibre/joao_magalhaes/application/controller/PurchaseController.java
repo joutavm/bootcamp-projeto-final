@@ -16,6 +16,7 @@ import java.util.List;
 public class PurchaseController {
 
     private final RetrieveProductService retrieveProductService;
+    private final FindProductService findProductService;
 
     @GetMapping
     public ResponseEntity<List<ProductView>> listAll(){

@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 public class ImplFindProduct implements FindProductService {
 
     private final ProductRepository productRepository;
+    private final ProductViewMapper productViewMapper;
 
     @Override
     public Product findById(Long id) {
