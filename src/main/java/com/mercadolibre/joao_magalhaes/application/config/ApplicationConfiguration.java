@@ -55,6 +55,11 @@ public class ApplicationConfiguration {
         return new ImplGetBuyOrderProducts(findBuyOrderById, buyOrderProductsMapper);
     }
 
+    @Bean
+    public UpdateOrderService updateOrderService(FindBuyOrderById findBuyOrderById, BuyOrderUpdateMapper buyOrderUpdateMapper){
+        return new ImplUpdateOrderService(findBuyOrderById,buyOrderUpdateMapper);
+    }
+
 
 
 }
