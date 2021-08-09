@@ -6,13 +6,15 @@ import com.mercadolibre.joao_magalhaes.domain.model.CartItem;
 import com.mercadolibre.joao_magalhaes.domain.model.Stock;
 import com.mercadolibre.joao_magalhaes.domain.repository.StockRepostitory;
 import com.mercadolibre.joao_magalhaes.domain.service.FindProductInStockService;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 public class ImplFindProductInStockService implements FindProductInStockService {
 
-    StockRepostitory stockRepostitory;
+    private final StockRepostitory stockRepostitory;
 
     @Override
     public Stock findProductInStock(BuyProductsForm buyProductsForm) {

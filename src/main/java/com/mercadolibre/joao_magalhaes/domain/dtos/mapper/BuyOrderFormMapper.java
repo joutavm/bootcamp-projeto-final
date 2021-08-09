@@ -10,11 +10,11 @@ import java.time.LocalDate;
 @Component
 public class BuyOrderFormMapper {
 
-    public BuyOrder map(BuyOrderForm source){
+    public void map(BuyOrderForm source){
         BuyOrder buyOrder = new BuyOrder();
         buyOrder.setOrderStatus(BuyOrderStatusEnum.CR);
         buyOrder.setDate(LocalDate.now());
         buyOrder.setBuyerId(source.getBuyerId());
-        buyOrder.setProduct();
+        //buyOrder.setProduct();
     }
 }

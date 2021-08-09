@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface StockRepostitory extends JpaRepository<Stock, Long> {
-    //Find que devolve todos os estoques que tem aquele produto, e ordernar ascendente
     @Query(value = "SELECT s from Stock s where s.product.id = :prodId order by s.currentQuantity ASC ")
      List<Stock> findStocksWhereIdMatchesOrderAsc(@Param("prodId") Long prodId);
 }
