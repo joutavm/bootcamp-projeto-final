@@ -1,6 +1,22 @@
 package com.mercadolibre.joao_magalhaes.application.config;
 
 import com.mercadolibre.joao_magalhaes.application.controller.PurchaseController;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.OrderFormMapper;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.ProductViewMapper;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StockFormMapper;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StockViewMapper;
+import com.mercadolibre.joao_magalhaes.domain.repository.OrderRepository;
+import com.mercadolibre.joao_magalhaes.domain.repository.ProductRepository;
+import com.mercadolibre.joao_magalhaes.domain.repository.SectionRepository;
+import com.mercadolibre.joao_magalhaes.domain.repository.StockRepostitory;
+import com.mercadolibre.joao_magalhaes.domain.service.CreateOrderService;
+import com.mercadolibre.joao_magalhaes.domain.service.FindProductService;
+import com.mercadolibre.joao_magalhaes.domain.service.RetrieveProductService;
+import com.mercadolibre.joao_magalhaes.domain.service.RetrieveSectionService;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplCreateOrder;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplFindProduct;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplRetrieveProductService;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplRetrieveSectionService;
 import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.*;
 import com.mercadolibre.joao_magalhaes.domain.model.BuyOrder;
 import com.mercadolibre.joao_magalhaes.domain.repository.*;
@@ -29,8 +45,13 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public FindProductService findProductService(ProductRepository productRepository, ProductViewMapper productViewMapper){
-        return new ImplFindProduct(productRepository, productViewMapper);
+    public FindProductService findProductService(ProductRepository productRepository){
+        return new ImplFindProduct(productRepository);
+    }
+
+    @Bean
+    public RetrieveProductService retrieveProductService(FindProductService findProductService, ProductViewMapper productViewMapper){
+        return new ImplRetrieveProductService(productViewMapper, findProductService);
     }
 
     @Bean

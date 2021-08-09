@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface FindProductService {
 
-    List<ProductView> findAll();
+    List<Product> findAll();
 
     Product findById(Long id) throws ItemNotFoundException;
 
