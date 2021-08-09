@@ -25,8 +25,9 @@ public class ProductLocationController {
     private final ProductLocationService productLocationService;
 
     @GetMapping
-    public ResponseEntity<List<ProductLocationView>> listById(@RequestParam("querytype") Long id){
-        return ResponseEntity.ok(productLocationService.findByStockList(id));
+    public ResponseEntity<List<ProductLocationView>> listById(@RequestParam("querytype") Long id, @RequestParam(value = "querytype", required = false) Character order){
+
+        return ResponseEntity.ok(productLocationService.findByStockSorted(id, order));
     }
 
 }
