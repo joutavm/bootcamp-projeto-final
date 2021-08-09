@@ -1,5 +1,6 @@
 package com.mercadolibre.joao_magalhaes.domain.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,4 +26,10 @@ public class BuyOrder {
     @OneToMany(cascade = CascadeType.ALL)
     private List<CartItem> cartItems;
 
+    public BuyOrder(LocalDate date, Long buyerId, BuyOrderStatusEnum orderStatus, List<CartItem> cartItems) {
+        this.date = date;
+        this.buyerId = buyerId;
+        this.orderStatus = orderStatus;
+        this.cartItems = cartItems;
+    }
 }
