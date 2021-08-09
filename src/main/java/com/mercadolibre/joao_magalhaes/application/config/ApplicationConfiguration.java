@@ -1,5 +1,21 @@
 package com.mercadolibre.joao_magalhaes.application.config;
 
+import com.mercadolibre.joao_magalhaes.application.controller.ProductLocationController;
+import com.mercadolibre.joao_magalhaes.application.controller.PurchaseController;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.*;
+import com.mercadolibre.joao_magalhaes.domain.repository.OrderRepository;
+import com.mercadolibre.joao_magalhaes.domain.repository.ProductRepository;
+import com.mercadolibre.joao_magalhaes.domain.repository.SectionRepository;
+import com.mercadolibre.joao_magalhaes.domain.repository.StockRepostitory;
+import com.mercadolibre.joao_magalhaes.domain.service.CreateOrderService;
+import com.mercadolibre.joao_magalhaes.domain.service.FindProductService;
+import com.mercadolibre.joao_magalhaes.domain.service.ProductLocationService;
+import com.mercadolibre.joao_magalhaes.domain.service.RetrieveSectionService;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplCreateOrder;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplFindProduct;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplProductLocation;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplRetrieveSectionService;
+
 import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.*;
 import com.mercadolibre.joao_magalhaes.domain.repository.*;
 import com.mercadolibre.joao_magalhaes.domain.service.*;
@@ -72,4 +88,8 @@ public class ApplicationConfiguration {
         return new ImplUpdateOrderService(findBuyOrderById,buyOrderUpdateMapper, findProductInStockService);
     }
 
+    @Bean
+    public ProductLocationService productLocationService(StockRepostitory stockRepostitory, ProductLocationMapper productLocationMapper){
+        return new ImplProductLocation(stockRepostitory, productLocationMapper);
+    }
 }
