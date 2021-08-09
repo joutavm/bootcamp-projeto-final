@@ -16,10 +16,7 @@ public interface StockRepostitory extends JpaRepository<Stock, Long> {
 
     @Query(value = "SELECT new com.mercadolibre.joao_magalhaes.domain.dtos.view_sql.ProductLocationSqlView(s.inboundOrder.section, s) FROM Stock s WHERE s.product.id = :id")
     List<ProductLocationSqlView> findByStockList(@Param("id") Long id);
-}
 
-@Repository
-public interface StockRepostitory extends JpaRepository<Stock, Long> {
     @Query(value = "SELECT s from Stock s where s.product.id = :prodId order by s.currentQuantity ASC ")
      List<Stock> findStocksWhereIdMatchesOrderAsc(@Param("prodId") Long prodId);
 }
