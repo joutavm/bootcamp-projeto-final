@@ -6,9 +6,7 @@ import com.mercadolibre.joao_magalhaes.domain.service.FindProductService;
 import com.mercadolibre.joao_magalhaes.domain.service.RetrieveProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +20,10 @@ public class PurchaseController {
     @GetMapping
     public ResponseEntity<List<ProductView>> listAll(){
         return ResponseEntity.ok(retrieveProductService.retrieveProductViewList());
+    }
+
+    @GetMapping("/{category}")
+    public ResponseEntity<List<ProductView>> listAllByCategory(@PathVariable("category") String category) {
+        return ResponseEntity.ok(findProductService.findAllProductsByCategory(category));
     }
 }

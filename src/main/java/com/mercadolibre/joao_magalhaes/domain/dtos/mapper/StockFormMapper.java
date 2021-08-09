@@ -25,4 +25,5 @@ public class StockFormMapper {
         stock.setDueDate(LocalDate.parse(stockForm.getDueDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         return stock;
     }
+
 }

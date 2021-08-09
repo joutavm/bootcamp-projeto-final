@@ -17,6 +17,11 @@ import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplCreateOrder;
 import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplFindProduct;
 import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplRetrieveProductService;
 import com.mercadolibre.joao_magalhaes.domain.service.impl.ImplRetrieveSectionService;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.*;
+import com.mercadolibre.joao_magalhaes.domain.model.BuyOrder;
+import com.mercadolibre.joao_magalhaes.domain.repository.*;
+import com.mercadolibre.joao_magalhaes.domain.service.*;
+import com.mercadolibre.joao_magalhaes.domain.service.impl.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -48,5 +53,34 @@ public class ApplicationConfiguration {
     public RetrieveProductService retrieveProductService(FindProductService findProductService, ProductViewMapper productViewMapper){
         return new ImplRetrieveProductService(productViewMapper, findProductService);
     }
+
+    @Bean
+    public FindProductInStockService findProductInStockService(StockRepostitory stockRepostitory){
+        return new ImplFindProductInStockService(stockRepostitory);
+    }
+
+    @Bean
+    public CreateBuyOrderService createBuyOrderService(FindProductInStockService findProductInStockService,
+                                                       FindProductService findProductService, BuyOrderFormMapper buyOrderFormMapper, BuyOrderRepository buyOrderRepository){
+        return new ImplBuyOrderService(findProductInStockService,findProductService, buyOrderFormMapper, buyOrderRepository);
+    }
+
+    @Bean
+    public FindBuyOrderById findBuyOrderById(BuyOrderRepository buyOrderRepository){
+        return new ImplFindBuyOrderById(buyOrderRepository);
+    }
+
+    @Bean
+    public GetBuyOrderProductsService getBuyOrderProductsService(FindBuyOrderById findBuyOrderById,
+            BuyOrderProductsMapper buyOrderProductsMapper){
+        return new ImplGetBuyOrderProducts(findBuyOrderById, buyOrderProductsMapper);
+    }
+
+    @Bean
+    public UpdateOrderService updateOrderService(FindBuyOrderById findBuyOrderById, BuyOrderUpdateMapper buyOrderUpdateMapper, FindProductInStockService findProductInStockService){
+        return new ImplUpdateOrderService(findBuyOrderById,buyOrderUpdateMapper, findProductInStockService);
+    }
+
+
 
 }
