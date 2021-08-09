@@ -18,6 +18,7 @@ public class OrderFormMapper  {
         InboundOrder order = new InboundOrder();
         order.setOrderDate(LocalDate.parse(source.getOrderDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         order.setSection(section);
+        stockList.forEach(e -> e.setInboundOrder(order)); // kenyo
         order.setStockList(stockList);
         return order;
     }
