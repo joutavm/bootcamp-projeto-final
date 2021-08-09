@@ -27,7 +27,7 @@ class StockFormMapperTest {
                 LocalDateTime.of(2021,3,12, 12, 30),
                 LocalDate.of(2021,3,12));
         StockFormMapper stockFormMapper = new StockFormMapper();
-        
+
         assertEquals(stock.getManufacturingTime(), stockFormMapper.updateStockByStockFormAndProduct(form, product).getManufacturingTime());
         assertEquals(stock.getManufacturingDate(), stockFormMapper.updateStockByStockFormAndProduct(form, product).getManufacturingDate());
         assertEquals(stock.getMinimumTemperature(), stockFormMapper.updateStockByStockFormAndProduct(form, product).getMinimumTemperature());
