@@ -7,9 +7,11 @@ import com.mercadolibre.joao_magalhaes.domain.model.Stock;
 import com.mercadolibre.joao_magalhaes.domain.repository.StockRepostitory;
 import com.mercadolibre.joao_magalhaes.domain.service.FindProductInStockService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.Optional;
+
 
 @RequiredArgsConstructor
 public class ImplFindProductInStockService implements FindProductInStockService {

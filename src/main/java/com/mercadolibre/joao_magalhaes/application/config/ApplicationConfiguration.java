@@ -1,14 +1,8 @@
 package com.mercadolibre.joao_magalhaes.application.config;
 
 import com.mercadolibre.joao_magalhaes.application.controller.PurchaseController;
-import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.OrderFormMapper;
-import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.ProductViewMapper;
-import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StockFormMapper;
-import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StockViewMapper;
-import com.mercadolibre.joao_magalhaes.domain.repository.OrderRepository;
-import com.mercadolibre.joao_magalhaes.domain.repository.ProductRepository;
-import com.mercadolibre.joao_magalhaes.domain.repository.SectionRepository;
-import com.mercadolibre.joao_magalhaes.domain.repository.StockRepostitory;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.*;
+import com.mercadolibre.joao_magalhaes.domain.repository.*;
 import com.mercadolibre.joao_magalhaes.domain.service.*;
 import com.mercadolibre.joao_magalhaes.domain.service.impl.*;
 import org.springframework.context.annotation.Bean;
@@ -45,8 +39,8 @@ public class ApplicationConfiguration {
 
     @Bean
     public CreateBuyOrderService createBuyOrderService(FindProductInStockService findProductInStockService,
-            FindProductService findProductService){
-        return new ImplBuyOrderService(findProductInStockService,findProductService);
+                                                       FindProductService findProductService, BuyOrderFormMapper buyOrderFormMapper, BuyOrderRepository buyOrderRepository){
+        return new ImplBuyOrderService(findProductInStockService,findProductService, buyOrderFormMapper, buyOrderRepository);
     }
 
 }

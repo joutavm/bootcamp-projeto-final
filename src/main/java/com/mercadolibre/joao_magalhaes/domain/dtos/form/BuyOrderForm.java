@@ -18,10 +18,6 @@ public class BuyOrderForm {
     private Long buyerId;
 
     @NotNull
-    @JsonProperty("orderStatus")
-    private OrderStatusForm orderStatus;
-
-    @NotNull
     @JsonProperty("products")
     private List<BuyProductsForm> products;
 }
