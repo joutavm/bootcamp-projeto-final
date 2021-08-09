@@ -24,4 +24,10 @@ public class Product {
         this.price = price;
         this.category = category;
     }
+
+    public Product(String name, double price, CategoryProductEnum category) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
+    }
 }
