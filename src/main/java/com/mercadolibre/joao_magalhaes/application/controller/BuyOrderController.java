@@ -12,7 +12,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/v1/fresh-products/orders/")
 @RequiredArgsConstructor
-public class CreateBuyOrderController {
+public class BuyOrderController {
 
     private final CreateBuyOrderService createBuyOrderService;
 
@@ -21,4 +21,7 @@ public class CreateBuyOrderController {
     public BuyOrderView createBuyOrder(@RequestBody @Valid BuyOrderForm buyOrderForm){
         return createBuyOrderService.create(buyOrderForm);
     }
+
+    @GetMapping()
+    public BuyOrderProductsView getOrderItems(@PathVariable(name= "querytype") String param){ return getBuyOrderProductsService.getProducts();}
 }
