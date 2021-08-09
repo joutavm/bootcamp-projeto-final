@@ -34,7 +34,6 @@ class ImplFindProductTest {
 
     @Mock
     private ProductViewMapper productViewMapper;
-
     @BeforeEach
     void setup(){
         implFindProduct = new ImplFindProduct(productRepository, productViewMapper);
@@ -69,15 +68,12 @@ class ImplFindProductTest {
         // given
         Product p1 = new Product(Long.valueOf(1), "Cheese", 2.0, CategoryProductEnum.FS);
 
-        ProductView p1View = new ProductView("Cheese", 2.0, CategoryProductEnum.FS.toString());
-
-        List<ProductView> expect = new ArrayList();
-        expect.add(p1View);
+        List<Product> expect = new ArrayList();
+        expect.add(p1);
 
         // when
         when(productRepository.findAll()).thenReturn(List.of(p1));
-        when(productViewMapper.map(any())).thenReturn(p1View);
-        List<ProductView> result = implFindProduct.findAll();
+        List<Product> result = implFindProduct.findAll();
 
         // Then
         assertEquals(expect.get(0), result.get(0));
@@ -91,6 +87,32 @@ class ImplFindProductTest {
         // when
         when(productRepository.findAll()).thenReturn(productList);
 
+        // Then
+        assertThrows(ItemNotFoundException.class, () -> implFindProduct.findAll());
+    }
+
+    @Test
+    void shouldReturnListProductViewWhenfindAllProductsByCategory() {
+        // Given
+        Product product = new Product(1L, "Cheese", 20.1, CategoryProductEnum.RF);
+        ProductView productView = new ProductView("Cheese", 20.1, "Refrigerado");
+        // When
+        when(productRepository.findByCategory(any())).thenReturn(Optional.of(List.of(product, product)));
+        when(productViewMapper.map(any())).thenReturn(productView);
+        List<ProductView> result = implFindProduct.findAllProductsByCategory("RF");
+
+        // Then
+        assertEquals(product.getName(), result.get(0).getName());
+        assertEquals(product.getPrice(), result.get(0).getPrice());
+        assertEquals(product.getCategory().toString(), result.get(0).getCategory());
+    }
+
+    @Test
+    void shouldReturnNotFoundWhenfindAllProductsByCategoryNotExist() {
+        // Given
+        // When
+        when(productRepository.findByCategory(any())).thenReturn(Optional.of(List.of(new Product())));
+        List<ProductView> result = implFindProduct.findAllProductsByCategory("RF");
         // Then
         assertThrows(ItemNotFoundException.class, () -> implFindProduct.findAll());
     }

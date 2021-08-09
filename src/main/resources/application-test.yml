@@ -1,17 +1,21 @@
 # "test" suffix properties file. Scopes name samples: "test", "web-test", "api-test", etc.
 # Overrides application.yml default properties
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://proxysql.master.meliseginf.com:6612/${DB_SCHEMA_NAME}?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&sessionVariables=sql_mode=''
-    username: ${LOCAL_DB_USER}
-    password: ${LOCAL_DB_PASS}
-    initialization-mode: always
 
   jpa:
-    open-in-view: true
-    database: mysql
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
     database-platform: org.hibernate.dialect.MySQL8Dialect
+
+  datasource:
+    db: friosdb
+    host: DB_MYSQL_DESAENV04_FRIOSDB_FRIOSDB_ENDPOINT
+    username: friosdb_WPROD
+    password: DB_MYSQL_DESAENV04_FRIOSDB_FRIOSDB_WPROD
+
+
+
+jwt:
+  secret: ${SECRET_TOKEN}
+  expiration: 86400000
