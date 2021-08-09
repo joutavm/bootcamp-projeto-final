@@ -1,5 +1,5 @@
-insert into product(name) values('queijo');
-insert into product(name) values('presunto');
+insert into product(name, price) values('queijo', 5.0);
+insert into product(name, price) values('presunto', 5.0);
 insert into warehouse(code) values('a');
 insert into section(code, size, warehouse_id) values('a', 10, 1);
 insert into section(code, size, warehouse_id) values('secao b', 5, 1);

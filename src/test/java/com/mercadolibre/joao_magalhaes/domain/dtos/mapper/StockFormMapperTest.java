@@ -16,11 +16,8 @@ class StockFormMapperTest {
 
     @Test
     public void shouldReturnTheSameStockInfo(){
-<<<<<<< HEAD
+
         Product product = new Product(Long.valueOf(1), "Cheese", 2.0, CategoryProduct.FS);
-=======
-        Product product = new Product(1L, "Cheese");
->>>>>>> eb4e27c0d583fd6faf487663b6e42159a0b2154f
 
          StockForm form = new StockForm(1L, 1L,
                 12.5f, 12.5f,
@@ -49,8 +46,8 @@ class StockFormMapperTest {
     @Test
     public void shouldUpdateStock_whenGivenStockPutStockFormAndProduct(){
         //given
-        Product product = new Product(1L, "Cheese");
-        Stock stock = new Stock(1L, new Product(1L, "Cheese"),
+        Product product = new Product(1L, "Cheese", 2.0, CategoryProduct.FS);
+        Stock stock = new Stock(1L, new Product(1L, "Cheese", 2.0, CategoryProduct.FS),
                 12.5f, 12.5f, 12, 12,
                 LocalDate.of(2021,3,12),
                 LocalDateTime.of(2021,3,12, 12, 30),
