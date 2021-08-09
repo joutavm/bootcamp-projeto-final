@@ -22,5 +22,5 @@ spring:
         format_sql: true
 
 jwt:
-  secret: ${TOKEN}
+  secret: ${SECRET_TOKEN}
   expiration: 86400000
