@@ -1,0 +1,50 @@
+package com.mercadolibre.joao_magalhaes.domain.service.impl;
+
+import com.mercadolibre.joao_magalhaes.domain.dtos.form.BuyOrderForm;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.BuyOrderFormMapper;
+import com.mercadolibre.joao_magalhaes.domain.dtos.view.BuyOrderView;
+import com.mercadolibre.joao_magalhaes.domain.exceptions.ItemNotFoundException;
+import com.mercadolibre.joao_magalhaes.domain.model.BuyOrder;
+import com.mercadolibre.joao_magalhaes.domain.model.Stock;
+import com.mercadolibre.joao_magalhaes.domain.repository.BuyOrderRepository;
+import com.mercadolibre.joao_magalhaes.domain.service.CreateBuyOrderService;
+import com.mercadolibre.joao_magalhaes.domain.service.FindProductInStockService;
+import com.mercadolibre.joao_magalhaes.domain.service.FindProductService;
+import lombok.RequiredArgsConstructor;
+
+import javax.transaction.Transactional;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicReference;
+
+@RequiredArgsConstructor
+public class ImplBuyOrderService implements CreateBuyOrderService{
+
+    private final FindProductInStockService findProductInStockService;
+    private final FindProductService findProductService;
+    private final BuyOrderFormMapper buyOrderFormMapper;
+    private final BuyOrderRepository buyOrderRepository;
+
+    @Override @Transactional
+    public BuyOrderView create(BuyOrderForm buyOrderForm) {
+
+        AtomicReference<Double> total = new AtomicReference<>(0.0);
+        HashMap<Long, String> returnView = new HashMap<>();
+        buyOrderForm.getProducts().forEach(item -> {
+             try {
+                 Stock validBatch = findProductInStockService.findProductInStock(item);
+                 //TODO: Decrementar do lote validBatch a quantidade do produto
+
+                 Double price = findProductService.findById(item.getProductId()).getPrice();
+                 total.updateAndGet(v -> v + item.getQuantity() * price);
+
+                 returnView.put(item.getProductId(), "success");
+             }catch(ItemNotFoundException e){
+                 returnView.put(item.getProductId(), "error");
+             }
+        });
+        BuyOrder buyOrder = buyOrderFormMapper.map(buyOrderForm, returnView);
+        buyOrderRepository.save(buyOrder);
+
+        return new BuyOrderView(total, returnView);
+    }
+}

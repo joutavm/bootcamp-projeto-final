@@ -23,7 +23,7 @@ public class StockViewMapperTest {
     @Test
     public void shouldReturnStockView_whenValidStockIsPassed(){
         //given
-        Product presunto = new Product(2L,"Presunto", 3.0, CategoryProduct.FS);
+        Product presunto = new Product(2L,"Presunto", 3.0, CategoryProductEnum.FS);
         Stock source = new Stock(1L,presunto,
                 12F,
                 13F,
@@ -57,7 +57,7 @@ public class StockViewMapperTest {
     @Test
     public void shouldReturnStockViewList_whenPassingValidInboundOrder(){
         //given
-        Product presunto = new Product(2L,"Presunto", 3.0, CategoryProduct.FS);
+        Product presunto = new Product(2L,"Presunto", 3.0, CategoryProductEnum.FS);
         Stock source = new Stock(1L,presunto,
                 12F,
                 13F,
