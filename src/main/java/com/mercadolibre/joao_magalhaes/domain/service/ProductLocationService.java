@@ -6,6 +6,8 @@ import com.mercadolibre.joao_magalhaes.domain.exceptions.ItemNotFoundException;
 
 import java.util.List;
 
-public interface ProductLocationService{
+public interface ProductLocationService {
     public List<ProductLocationView> findByStockList(Long id) throws ItemNotFoundException;
+
+    public List<ProductLocationView> findByStockSorted(Long id, Character order);
 }
