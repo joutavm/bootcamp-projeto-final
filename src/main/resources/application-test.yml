@@ -9,10 +9,10 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
   datasource:
-    db: friosdb
-    host: DB_MYSQL_DESAENV04_FRIOSDB_FRIOSDB_ENDPOINT
-    username: friosdb_WPROD
-    password: DB_MYSQL_DESAENV04_FRIOSDB_FRIOSDB_WPROD
+    db: wnegraodb
+    host: DB_MYSQL_DESAENV04_WNEGRAODB_WNEGRAODB_ENDPOINT
+    username: wnegraodb_WPROD
+    password: DB_MYSQL_DESAENV04_WNEGRAODB_WNEGRAODB_WPROD
 
 
 
