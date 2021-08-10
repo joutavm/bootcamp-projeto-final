@@ -68,8 +68,8 @@ public class BuyOrderControllerPostTest extends ControllerTest{
         BuyOrderForm buyOrderForm = new BuyOrderForm();
         //Look into data-integration_test.sql for available stock for each product.
         List<BuyProductsForm> productsList = new ArrayList<>(){{
-            add(new BuyProductsForm(1L, 12));
-            add(new BuyProductsForm(2L, 44));
+            add(new BuyProductsForm(1L, 5000));
+            add(new BuyProductsForm(2L, 5000));
         }};
         buyOrderForm.setBuyerId(1L);
         buyOrderForm.setProducts(productsList);
