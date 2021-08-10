@@ -24,6 +24,8 @@ public class Stock {
     private LocalDate manufacturingDate;
     private LocalDateTime manufacturingTime;
     private LocalDate dueDate;
+    @ManyToOne
+    private InboundOrder inboundOrder;
 
     public Stock(Product product, InboundOrder inboundOrder) {
         this.product = product;
