@@ -41,6 +41,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.POST,"/api/v1/fresh-products/inboundorder/").hasAuthority("representante")
                 .antMatchers(HttpMethod.PUT,"/api/v1/fresh-products/inboundorder/").hasAuthority("representante")
+                .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/warehouse/*").hasAuthority("representante")
                 .antMatchers(HttpMethod.GET, "/ping").permitAll()
                 .antMatchers(HttpMethod.POST,"/auth").permitAll()
                 .and().csrf().disable()

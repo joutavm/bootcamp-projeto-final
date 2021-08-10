@@ -89,7 +89,7 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public ProductLocationService productLocationService(StockRepostitory stockRepostitory, ProductLocationMapper productLocationMapper){
-        return new ImplProductLocation(stockRepostitory, productLocationMapper);
+    public ProductLocationService productLocationService(StockRepostitory stockRepostitory, ProductLocationMapper productLocationMapper, ProductInWarehouseMapper productInWarehouseMapper, StocksByProductInWarehousesMapper stocksByProductInWarehousesMapper){
+        return new ImplProductLocation(stockRepostitory, productLocationMapper, productInWarehouseMapper, stocksByProductInWarehousesMapper);
     }
 }
