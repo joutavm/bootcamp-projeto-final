@@ -7,3 +7,4 @@ target/
 .classpath
 .project
 /.jpb/jpb-settings.xml
+/src/main/resources/application-meu.yml
