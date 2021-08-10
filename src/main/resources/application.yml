@@ -19,7 +19,7 @@ springdoc:
     enabled: true
     path: /v3/api-docs
   paths-to-match: /**
-  packages-to-scan: com.mercadolibre.joao_magalhaes.application.controller
+  packages-to-scan: com.mercadolibre.projeto_final.application.controller
   show-actuator: true
   swagger-ui:
     operations-sorter: alpha
