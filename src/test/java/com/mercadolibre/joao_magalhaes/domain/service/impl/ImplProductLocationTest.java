@@ -3,8 +3,13 @@ package com.mercadolibre.joao_magalhaes.domain.service.impl;
 import com.mercadolibre.joao_magalhaes.application.util.MockitoExtension;
 import com.mercadolibre.joao_magalhaes.domain.dtos.form.InboundOrderForm;
 import com.mercadolibre.joao_magalhaes.domain.dtos.form.SectionForm;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.ProductInWarehouseMapper;
 import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.ProductLocationMapper;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StocksByProductInWarehousesMapper;
+import com.mercadolibre.joao_magalhaes.domain.dtos.view.ProductInWarehouseView;
 import com.mercadolibre.joao_magalhaes.domain.dtos.view.ProductLocationView;
+import com.mercadolibre.joao_magalhaes.domain.dtos.view.ProductWithIdWarehouseView;
+import com.mercadolibre.joao_magalhaes.domain.dtos.view_sql.ProductInWarehouseSqlView;
 import com.mercadolibre.joao_magalhaes.domain.dtos.view_sql.ProductLocationSqlView;
 import com.mercadolibre.joao_magalhaes.domain.exceptions.ItemNotFoundException;
 import com.mercadolibre.joao_magalhaes.domain.model.*;
@@ -34,11 +39,19 @@ class ImplProductLocationTest {
     @Mock
     ProductLocationMapper productLocationMapper;
 
+    @Mock
+    ProductInWarehouseMapper productInWarehouseMapper;
+
+    @Mock
+    StocksByProductInWarehousesMapper stocksByProductInWarehousesMapper;
+
     ImplProductLocation implProductLocation;
+
+
 
     @BeforeEach
     void setUp() {
-        implProductLocation = new ImplProductLocation(stockRepostitory, productLocationMapper);
+        implProductLocation = new ImplProductLocation(stockRepostitory, productLocationMapper, productInWarehouseMapper, stocksByProductInWarehousesMapper);
     }
 
     @Test
@@ -90,5 +103,40 @@ class ImplProductLocationTest {
 
         // Then
         assertThrows(ItemNotFoundException.class, () -> implProductLocation.findByStockList(1L));
+    }
+
+    @Test
+    void shouldThrowExceptionWhenProductNotFoundOnWarehouses(){
+        // given
+        List<ProductInWarehouseSqlView> productInWarehouseSqlViewList = new ArrayList<>();
+
+        // when
+        when(stockRepostitory.findByWarehouse(any())).thenReturn(productInWarehouseSqlViewList);
+
+        // Then
+        assertThrows(ItemNotFoundException.class, () -> implProductLocation.findByWarehouse(1L));
+    }
+
+    @Test
+    public void shouldReturnProductWithIdWarehouseViewListWhenProductIsInWarehouse() {
+        // given
+        ProductInWarehouseSqlView productInWarehouseSqlView = new ProductInWarehouseSqlView();
+        List<ProductInWarehouseSqlView> productInWarehouseSqlViewList = new ArrayList<>();
+
+        productInWarehouseSqlViewList.add(productInWarehouseSqlView);
+
+        ProductInWarehouseView productInWarehouseView = new ProductInWarehouseView();
+        List<ProductInWarehouseView> listMapper = new ArrayList<>();
+        listMapper.add(productInWarehouseView);
+
+        ProductWithIdWarehouseView expect = new ProductWithIdWarehouseView();
+        // when
+        when(stockRepostitory.findByWarehouse(any())).thenReturn(productInWarehouseSqlViewList);
+        when(productInWarehouseMapper.map(any())).thenReturn(productInWarehouseView);
+        when(stocksByProductInWarehousesMapper.map(any(), any())).thenReturn(expect);
+
+        ProductWithIdWarehouseView result = implProductLocation.findByWarehouse(1L);
+        // then
+        assertEquals(expect, result);
     }
 }
