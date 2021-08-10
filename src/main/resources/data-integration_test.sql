@@ -1,12 +1,11 @@
-insert into product(name, price) values('queijo', 5.0);
-insert into product(name, price) values('presunto', 5.0);
-insert into warehouse(code) values('a');
-insert into section(code, size, warehouse_id) values('a', 10, 1);
-insert into section(code, size, warehouse_id) values('secao b', 5, 1);
-insert into profiles(role) values ('representante');
-insert into profiles(role) values ('comprador');
---12345
-insert into integrantes(name, password) values ('jorge', '$2a$10$vviww86InXz7RggmP873pubArXf05vwKGTalArLRZXEFTtD1xZ7cm');
-insert into integrantes(name, password) values ('carlos', '$2a$10$vviww86InXz7RggmP873pubArXf05vwKGTalArLRZXEFTtD1xZ7cm');
-insert into integrantes_profiles(user_id, profiles_id) values (1, 1);
-insert into integrantes_profiles(user_id, profiles_id) values (2, 2);
+INSERT INTO `buy_order` VALUES (1,1,'2021-08-10','CR'),(2,1,'2021-08-10','CR'),(3,1,'2021-08-10','CR'),(4,1,'2021-08-10','CR'),(5,1,'2021-08-10','CR');
+INSERT INTO `buy_order_cart_items` VALUES (1,1),(2,2),(3,3),(3,4),(4,5),(4,6),(5,7),(5,8);
+INSERT INTO `cart_item` VALUES (1,1,1),(2,1,1),(3,1,1),(4,2,2),(5,1,1),(6,2,2),(7,1,1),(8,2,2);
+INSERT INTO `inbound_order` VALUES (1,'2021-08-05',1),(2,'2021-08-05',1),(3,'2021-08-05',1),(4,'2021-08-05',1),(5,'2021-08-05',1),(6,'2021-08-05',1),(7,'2021-08-05',1),(8,'2021-08-05',1),(9,'2021-08-05',1),(10,'2021-08-05',1),(11,'2021-08-05',1),(12,'2021-08-05',1);
+INSERT INTO `integrantes` VALUES (1,'jorge','$2a$10$vviww86InXz7RggmP873pubArXf05vwKGTalArLRZXEFTtD1xZ7cm'),(2,'carlos','$2a$10$vviww86InXz7RggmP873pubArXf05vwKGTalArLRZXEFTtD1xZ7cm');
+INSERT INTO `integrantes_profiles` VALUES (1,1),(2,2);
+INSERT INTO `product` VALUES (1,'FS','queijo',5),(2,'RF','presunto',5);
+INSERT INTO `profiles` VALUES (1,'representante'),(2,'comprador');
+INSERT INTO `section` VALUES (1,'a',10,1),(2,'secao b',5,1);
+INSERT INTO `stock` VALUES (1,10,50,'2021-08-05',10,'2021-08-05','2021-08-05 19:35:00.000000',60,1,1),(2,10,50,'2021-08-05',10,'2021-08-05','2021-08-05 19:35:00.000000',60,2,1),(3,10,50,'2021-08-05',10,'2021-08-05','2021-08-05 19:35:00.000000',60,3,1),(4,10,50,'2021-08-05',10,'2021-08-05','2021-08-05 19:35:00.000000',60,4,1),(5,10,50,'2021-08-05',10,'2021-08-05','2021-08-05 19:35:00.000000',60,5,1),(6,10,50,'2021-08-05',10,'2021-08-05','2021-08-05 19:35:00.000000',60,6,1),(7,10,50,'2021-08-05',10,'2021-08-05','2021-08-05 19:35:00.000000',60,7,1),(8,10,50,'2021-08-05',10,'2021-08-05','2021-08-05 19:35:00.000000',60,8,2),(9,10,50,'2021-08-05',10,'2021-08-05','2021-08-05 19:35:00.000000',60,9,2),(10,10,50,'2021-08-05',10,'2021-08-05','2021-08-05 19:35:00.000000',60,10,2),(11,10,50,'2021-08-05',10,'2021-08-05','2021-08-05 19:35:00.000000',60,11,2),(12,10,50,'2021-08-05',10,'2021-08-05','2021-08-05 19:35:00.000000',60,12,2);
+INSERT INTO `warehouse` VALUES (1,'a');
