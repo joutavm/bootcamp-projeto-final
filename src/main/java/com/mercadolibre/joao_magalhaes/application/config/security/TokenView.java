@@ -1,13 +1,17 @@
 package com.mercadolibre.joao_magalhaes.application.config.security;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@RequiredArgsConstructor
 @Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class TokenView {
 
-    private final String token;
-    private final String type;
+    private String token;
+    private String type;
 
 }
