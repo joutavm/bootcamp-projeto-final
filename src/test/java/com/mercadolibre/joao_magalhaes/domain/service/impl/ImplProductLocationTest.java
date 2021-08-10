@@ -19,6 +19,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,6 +28,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -138,5 +140,63 @@ class ImplProductLocationTest {
         ProductWithIdWarehouseView result = implProductLocation.findByWarehouse(1L);
         // then
         assertEquals(expect, result);
+    }
+
+    @Test
+    public void shouldReturnProductLocationSortedByQuantityListWhenProductIsInStock(){
+        //Given
+        ImplProductLocation location = new ImplProductLocation(stockRepostitory, productLocationMapper, productInWarehouseMapper, stocksByProductInWarehousesMapper);
+        ImplProductLocation location1 = Mockito.spy(location);
+
+        ProductLocationView productLocationView = new ProductLocationView("12", "12", 1L, 1L, 12, "12-03-2021");
+        ProductLocationView productLocationView2 = new ProductLocationView("12", "12", 1L, 1L, 90, "02-03-2021");
+
+        List<ProductLocationView> expect = new ArrayList<>();
+        expect.add(productLocationView);
+        expect.add(productLocationView2);
+
+        // when
+        when(stockRepostitory.findByStockList(any())).thenReturn(List.of(new ProductLocationSqlView()));
+        when(productLocationMapper.map(any())).thenReturn(productLocationView2);
+        doReturn(expect).when(location1).findByStockList(any());
+
+        List<ProductLocationView> result = location1.findByStockSorted(1L, 'C');
+
+        // then
+        assertEquals(expect.get(0).getCurrentQuantity(), result.get(0).getCurrentQuantity());
+        assertEquals(expect.get(0).getDueDate(), result.get(0).getDueDate());
+        assertEquals(expect.get(0).getProductId(), result.get(0).getProductId());
+        assertEquals(expect.get(0).getBatchNumber(), result.get(0).getBatchNumber());
+        assertEquals(expect.get(0).getSectionCode(), result.get(0).getSectionCode());
+        assertEquals(expect.get(0).getWarehouseCode(), result.get(0).getWarehouseCode());
+    }
+
+    @Test
+    public void shouldReturnProductLocationSortedByDateListWhenProductIsInStock(){
+        //Given
+        ImplProductLocation location = new ImplProductLocation(stockRepostitory, productLocationMapper, productInWarehouseMapper, stocksByProductInWarehousesMapper);
+        ImplProductLocation location1 = Mockito.spy(location);
+
+        ProductLocationView productLocationView = new ProductLocationView("12", "12", 1L, 1L, 12, "12-03-2021");
+        ProductLocationView productLocationView2 = new ProductLocationView("12", "12", 1L, 1L, 90, "02-03-2021");
+
+        List<ProductLocationView> expect = new ArrayList<>();
+        expect.add(productLocationView);
+        expect.add(productLocationView2);
+
+        // when
+        when(stockRepostitory.findByStockList(any())).thenReturn(List.of(new ProductLocationSqlView()));
+        when(productLocationMapper.map(any())).thenReturn(productLocationView2);
+        doReturn(expect).when(location1).findByStockList(any()); // mocks the service
+
+        List<ProductLocationView> result = location1.findByStockSorted(1L, 'F');
+
+        // then
+        assertEquals(expect.get(1).getCurrentQuantity(), result.get(0).getCurrentQuantity());
+        assertEquals(expect.get(1).getDueDate(), result.get(0).getDueDate());
+        assertEquals(expect.get(1).getProductId(), result.get(0).getProductId());
+        assertEquals(expect.get(1).getBatchNumber(), result.get(0).getBatchNumber());
+        assertEquals(expect.get(1).getSectionCode(), result.get(0).getSectionCode());
+        assertEquals(expect.get(1).getWarehouseCode(), result.get(0).getWarehouseCode());
     }
 }
