@@ -1,5 +1,6 @@
 package com.mercadolibre.joao_magalhaes.domain.dtos.mapper;
 
+import com.mercadolibre.joao_magalhaes.domain.dtos.form.PutStockForm;
 import com.mercadolibre.joao_magalhaes.domain.dtos.form.StockForm;
 import com.mercadolibre.joao_magalhaes.domain.model.CategoryProductEnum;
 import com.mercadolibre.joao_magalhaes.domain.model.Product;
@@ -8,12 +9,15 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class StockFormMapperTest {
 
-    StockFormMapper stockFormMapper = new StockFormMapper();
+    private final StockFormMapper stockFormMapper = new StockFormMapper();
 
     @Test
     public void shouldReturnTheSameStockInfo(){
@@ -42,5 +46,28 @@ class StockFormMapperTest {
 
         assertEquals(stock.getProduct().getName(), stockFormMapper.updateStockByStockFormAndProduct(form, product).getProduct().getName());
         assertEquals(stock.getProduct().getId(), stockFormMapper.updateStockByStockFormAndProduct(form, product).getProduct().getId());
+    }
+
+    @Test
+    public void updateStockByStockFormAndProduct_GivenStockPutStockFormProduct(){
+        //Given
+        Product product = new Product(1L, "Cheese", 2.0, CategoryProductEnum.FS);
+        PutStockForm putStockForm = new PutStockForm(1L, 1L, 12.5f,
+                12.5f, 12, 12,
+                LocalDate.of(2021, 10, 10).format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+                LocalDateTime.of(2021, 10,10,10,10).format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
+                LocalDate.of(2021,10,10).format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+
+        Stock stock = new Stock(1L, product,
+                12.5f, 12.5f, 12, 12,
+                LocalDate.of(2021,3,12),
+                LocalDateTime.of(2021,3,12, 12, 30),
+                LocalDate.of(2021,3,12));
+
+        //when
+        stockFormMapper.updateStockByStockFormAndProduct(stock,putStockForm,product);
+
+        //then
+        assertEquals(stock.getCurrentTemperature(),putStockForm.getCurrentTemperature());
     }
 }
