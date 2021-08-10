@@ -2,6 +2,7 @@ package com.mercadolibre.joao_magalhaes.application.controller;
 
 
 import com.mercadolibre.joao_magalhaes.domain.dtos.view.ProductLocationView;
+import com.mercadolibre.joao_magalhaes.domain.dtos.view.ProductWithIdWarehouseView;
 import com.mercadolibre.joao_magalhaes.domain.dtos.view_sql.ProductLocationSqlView;
 import com.mercadolibre.joao_magalhaes.domain.repository.OrderRepository;
 import com.mercadolibre.joao_magalhaes.domain.repository.StockRepostitory;
@@ -28,6 +29,11 @@ public class ProductLocationController {
     public ResponseEntity<List<ProductLocationView>> listById(@RequestParam("querytype") Long id, @RequestParam(value = "querytype", required = false) Character order){
 
         return ResponseEntity.ok(productLocationService.findByStockSorted(id, order));
+    }
+
+    @GetMapping
+    public ResponseEntity<ProductWithIdWarehouseView> listById(@RequestParam("querytype") Long id){
+        return ResponseEntity.ok(productLocationService.findByWarehouse(id));
     }
 
 }
