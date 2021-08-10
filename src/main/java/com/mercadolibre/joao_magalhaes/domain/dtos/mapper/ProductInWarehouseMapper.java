@@ -9,7 +9,7 @@ public class ProductInWarehouseMapper {
     public ProductInWarehouseView map(ProductInWarehouseSqlView productInWarehouseSqlView){
         ProductInWarehouseView productInWarehouseView = new ProductInWarehouseView();
         productInWarehouseView.setWarehouseCode(productInWarehouseSqlView.getWarehouse().getCode());
-
+        productInWarehouseView.setTotalQuantity(productInWarehouseSqlView.getTotalQuantity().intValue());
         return productInWarehouseView;
     }
 }

@@ -13,4 +13,8 @@ import lombok.Setter;
 public class ProductInWarehouseSqlView {
     private Warehouse warehouse;
     private Long totalQuantity;
+
+    public ProductInWarehouseSqlView(Long totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
 }

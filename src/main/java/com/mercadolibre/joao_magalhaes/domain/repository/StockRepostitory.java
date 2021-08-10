@@ -23,4 +23,7 @@ public interface StockRepostitory extends JpaRepository<Stock, Long> {
 
     @Query(value = "SELECT new com.mercadolibre.joao_magalhaes.domain.dtos.view_sql.ProductInWarehouseSqlView(s.inboundOrder.section.warehouse, SUM(s.currentQuantity)) FROM Stock s WHERE s.product.id=:id GROUP BY s.inboundOrder.section.warehouse")
     List<ProductInWarehouseSqlView> findByWarehouse(@Param("id") Long id);
+
+    @Query(value = "SELECT new com.mercadolibre.joao_magalhaes.domain.dtos.view_sql.ProductInWarehouseSqlView(SUM(s.currentQuantity)) FROM Stock s WHERE s.product.id=:id GROUP BY s.inboundOrder.section.warehouse")
+    ProductInWarehouseSqlView findByWarehouse2(@Param("id") Long id);
 }
