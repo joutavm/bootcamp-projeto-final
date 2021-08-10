@@ -29,7 +29,9 @@ public class BuyOrderController {
     }
 
     @GetMapping()
-    public List<BuyOrderProductsView> getOrderItems(@RequestParam(name= "querytype") Long param){ return getBuyOrderProductsService.getProducts(param);}
+    public List<BuyOrderProductsView> getOrderItems(@RequestParam(name= "querytype") Long param){
+        return getBuyOrderProductsService.getProducts(param);
+    }
 
     @PutMapping()
     @ResponseStatus(HttpStatus.CREATED)
