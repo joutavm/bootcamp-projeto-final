@@ -1,5 +1,6 @@
 package com.mercadolibre.joao_magalhaes.domain.repository;
 
+import com.mercadolibre.joao_magalhaes.domain.dtos.view_sql.ProductInWarehouseSqlView;
 import com.mercadolibre.joao_magalhaes.domain.dtos.view_sql.ProductLocationSqlView;
 import com.mercadolibre.joao_magalhaes.domain.model.Section;
 import com.mercadolibre.joao_magalhaes.domain.model.Stock;
@@ -19,4 +20,7 @@ public interface StockRepostitory extends JpaRepository<Stock, Long> {
 
     @Query(value = "SELECT s from Stock s where s.product.id = :prodId order by s.currentQuantity ASC ")
      List<Stock> findStocksWhereIdMatchesOrderAsc(@Param("prodId") Long prodId);
+
+    @Query(value = "SELECT new com.mercadolibre.joao_magalhaes.domain.dtos.view_sql.ProductInWarehouseSqlView(s.inboundOrder.section.warehouse, SUM(s.currentQuantity)) FROM Stock s WHERE s.product.id=:id GROUP BY s.inboundOrder.section.warehouse")
+    List<ProductInWarehouseSqlView> findByWarehouse(@Param("id") Long id);
 }
