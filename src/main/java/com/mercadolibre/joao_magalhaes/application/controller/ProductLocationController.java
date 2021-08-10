@@ -9,10 +9,7 @@ import com.mercadolibre.joao_magalhaes.domain.repository.StockRepostitory;
 import com.mercadolibre.joao_magalhaes.domain.service.ProductLocationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.time.LocalDate;
@@ -20,20 +17,22 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1/fresh-products/list")
+@RequestMapping("/api/v1/fresh-products")
 public class ProductLocationController {
 
     private final ProductLocationService productLocationService;
+    private final StockRepostitory stockRepostitory;
 
     @GetMapping
+    @RequestMapping("/list")
     public ResponseEntity<List<ProductLocationView>> listById(@RequestParam("querytype") Long id, @RequestParam(value = "querytype", required = false) Character order){
 
         return ResponseEntity.ok(productLocationService.findByStockSorted(id, order));
     }
 
     @GetMapping
-    public ResponseEntity<ProductWithIdWarehouseView> listById(@RequestParam("querytype") Long id){
-        return ResponseEntity.ok(productLocationService.findByWarehouse(id));
+    @RequestMapping("/warehouse/{querytype}")
+    public ResponseEntity<ProductWithIdWarehouseView> listByWarehouse(@PathVariable Long querytype){
+        return ResponseEntity.ok(productLocationService.findByWarehouse(querytype));
     }
-
 }
