@@ -12,12 +12,12 @@
     </parent>
 
     <groupId>com.mercadolibre</groupId>
-    <artifactId>joao-magalhaes</artifactId>
+    <artifactId>pedro-cattel</artifactId>
     <version>last</version>
     <packaging>jar</packaging>
 
-    <name>joao-magalhaes</name>
-    <description>joao-magalhaes</description>
+    <name>pedro-cattel</name>
+    <description>pedro-cattel</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
