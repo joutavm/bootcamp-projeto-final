@@ -1,17 +1,12 @@
 package com.mercadolibre.joao_magalhaes.integration;
 
 import com.mercadolibre.joao_magalhaes.application.config.security.TokenView;
-import com.mercadolibre.joao_magalhaes.domain.dtos.form.InboundOrderForm;
-import com.mercadolibre.joao_magalhaes.domain.dtos.form.LoginForm;
-import com.mercadolibre.joao_magalhaes.domain.dtos.form.SectionForm;
-import com.mercadolibre.joao_magalhaes.domain.dtos.form.StockForm;
+import com.mercadolibre.joao_magalhaes.domain.dtos.form.*;
 import com.mercadolibre.joao_magalhaes.domain.dtos.view.StockView;
 import org.json.JSONException;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -21,9 +16,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class InsertBatchControllerTest extends ControllerTest{
 
 
+    static LoginForm LOGIN;
+
+    @BeforeAll
+    static void beforeAll() {
+        LOGIN = new LoginForm();
+        LOGIN.setUserName("jorge");
+        LOGIN.setPassword("12345");
+
+    }
 
     @Test
-    void shouldReturnCreatedWhenPassValidForm() throws JSONException {
+    void shouldReturnCreatedWhenPassValidFormAndValidToken() throws JSONException {
         // given
         InboundOrderForm orderForm = new InboundOrderForm();
         SectionForm sectionForm = new SectionForm();
@@ -47,13 +51,11 @@ class InsertBatchControllerTest extends ControllerTest{
 
 
 
-        LoginForm login = new LoginForm();
-        login.setUserName("jorge");
-        login.setPassword("12345");
+
 
 
         // When
-        ResponseEntity<TokenView> loginEntity = this.testRestTemplate.postForEntity("/auth", login, TokenView.class);
+        ResponseEntity<TokenView> loginEntity = this.testRestTemplate.postForEntity("/auth", LOGIN, TokenView.class);
         String token = Objects.requireNonNull(loginEntity.getBody()).getToken();
 
 
@@ -74,5 +76,59 @@ class InsertBatchControllerTest extends ControllerTest{
         // Then
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
     }
+
+    @Test
+    void shouldReturnOkWhenPassValidFormAndValidTokenToUpdateOrder(){
+
+        // Given
+        PutStockForm stockForm = new PutStockForm();
+        stockForm.setNumber(1L);
+        stockForm.setProductId(1L);
+        stockForm.setInitialQuantity(50);
+        stockForm.setCurrentQuantity(40);
+        stockForm.setManufacturingTime("06-08-2021 17:40");
+        stockForm.setManufacturingDate("04-08-2021");
+        stockForm.setCurrentTemperature(80F);
+        stockForm.setMinimumTemperature(90F);
+        stockForm.setDueDate("05-08-2021");
+
+
+        SectionForm sectionForm = new SectionForm();
+        sectionForm.setSectionCode("a");
+        sectionForm.setWarehouseCode("a");
+
+        PutInboundForm form = new PutInboundForm();
+        form.setSection(sectionForm);
+        form.setOrderNumber(1L);
+        form.setBatchStock(List.of(stockForm));
+
+
+        // When
+        ResponseEntity<TokenView> loginEntity = this.testRestTemplate.postForEntity("/auth", LOGIN, TokenView.class);
+        String token = Objects.requireNonNull(loginEntity.getBody()).getToken();
+
+
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + token);
+
+
+
+        HttpEntity<PutInboundForm> request = new HttpEntity<>(form, headers);
+
+        ResponseEntity<StockView[]> responseEntity = this.testRestTemplate.exchange(
+                "/api/v1/fresh-products/inboundorder/",
+                HttpMethod.PUT,
+                request,
+                StockView[].class
+        );
+
+
+        // Then
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+
+    }
+
+
 
 }
