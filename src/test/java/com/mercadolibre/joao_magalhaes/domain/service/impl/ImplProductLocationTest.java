@@ -3,7 +3,9 @@ package com.mercadolibre.joao_magalhaes.domain.service.impl;
 import com.mercadolibre.joao_magalhaes.application.util.MockitoExtension;
 import com.mercadolibre.joao_magalhaes.domain.dtos.form.InboundOrderForm;
 import com.mercadolibre.joao_magalhaes.domain.dtos.form.SectionForm;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.ProductInWarehouseMapper;
 import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.ProductLocationMapper;
+import com.mercadolibre.joao_magalhaes.domain.dtos.mapper.StocksByProductInWarehousesMapper;
 import com.mercadolibre.joao_magalhaes.domain.dtos.view.ProductLocationView;
 import com.mercadolibre.joao_magalhaes.domain.dtos.view_sql.ProductLocationSqlView;
 import com.mercadolibre.joao_magalhaes.domain.exceptions.ItemNotFoundException;
@@ -34,11 +36,19 @@ class ImplProductLocationTest {
     @Mock
     ProductLocationMapper productLocationMapper;
 
+    @Mock
+    ProductInWarehouseMapper productInWarehouseMapper;
+
+    @Mock
+    StocksByProductInWarehousesMapper stocksByProductInWarehousesMapper;
+
     ImplProductLocation implProductLocation;
+
+
 
     @BeforeEach
     void setUp() {
-        implProductLocation = new ImplProductLocation(stockRepostitory, productLocationMapper);
+        implProductLocation = new ImplProductLocation(stockRepostitory, productLocationMapper, productInWarehouseMapper, stocksByProductInWarehousesMapper);
     }
 
     @Test
