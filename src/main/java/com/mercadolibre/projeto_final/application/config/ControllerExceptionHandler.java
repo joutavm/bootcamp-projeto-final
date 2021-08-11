@@ -3,21 +3,31 @@ package com.mercadolibre.projeto_final.application.config;
 import com.mercadolibre.projeto_final.domain.exceptions.ApiError;
 import com.mercadolibre.projeto_final.domain.exceptions.ApiException;
 import com.newrelic.api.agent.NewRelic;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
-
+@RequiredArgsConstructor
 public class ControllerExceptionHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ControllerExceptionHandler.class);
+
+	private final MessageSource messageSource;
 
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public ResponseEntity<ApiError> noHandlerFoundException(HttpServletRequest req, NoHandlerFoundException ex) {
@@ -57,5 +67,19 @@ public class ControllerExceptionHandler {
 		ApiError apiError = new ApiError("BAD REQUEST", e.getMessage(), HttpStatus.BAD_REQUEST.value());
 		return ResponseEntity.status(apiError.getStatus())
 				.body(apiError);
+	}
+
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public ApiException handle(MethodArgumentNotValidException exception) {
+
+		List<FieldError> fieldErros = exception.getBindingResult().getFieldErrors();
+
+		String messages = fieldErros.stream().map(e ->
+				String.format("Field: %s, Message: %s", e.getField(), messageSource.getMessage(e, LocaleContextHolder.getLocale()))
+		).collect(Collectors.toList()).toString();
+
+		return new ApiException("BAD REQUEST", messages, 403);
+
 	}
 }
