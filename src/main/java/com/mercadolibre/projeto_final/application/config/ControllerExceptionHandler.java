@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.NoHandlerFoundException;
@@ -47,6 +48,13 @@ public class ControllerExceptionHandler {
 		NewRelic.noticeError(e);
 
 		ApiError apiError = new ApiError("internal_error", "Internal server error", HttpStatus.INTERNAL_SERVER_ERROR.value());
+		return ResponseEntity.status(apiError.getStatus())
+				.body(apiError);
+	}
+
+	@ExceptionHandler(value = { MissingServletRequestParameterException.class})
+	public ResponseEntity<ApiError> missingArumentsHandler(MissingServletRequestParameterException e) {
+		ApiError apiError = new ApiError("BAD REQUEST", e.getMessage(), HttpStatus.BAD_REQUEST.value());
 		return ResponseEntity.status(apiError.getStatus())
 				.body(apiError);
 	}
