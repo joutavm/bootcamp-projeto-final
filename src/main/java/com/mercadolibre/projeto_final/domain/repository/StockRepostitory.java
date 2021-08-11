@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -24,4 +25,7 @@ public interface StockRepostitory extends JpaRepository<Stock, Long> {
 
     @Query(value = "SELECT new com.mercadolibre.projeto_final.domain.dtos.view_sql.ProductInWarehouseSqlView(SUM(s.currentQuantity)) FROM Stock s WHERE s.product.id=:id GROUP BY s.inboundOrder.section.warehouse")
     ProductInWarehouseSqlView findByWarehouse2(@Param("id") Long id);
+
+    @Query(value = "SELECT s FROM Stock s WHERE s.dueDate <= :date")
+    List<Stock> findByDueDate(@Param("date") LocalDate date);
 }
