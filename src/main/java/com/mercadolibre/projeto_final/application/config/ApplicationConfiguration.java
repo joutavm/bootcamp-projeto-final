@@ -89,4 +89,9 @@ public class ApplicationConfiguration {
     public ProductLocationService productLocationService(StockRepostitory stockRepostitory, ProductLocationMapper productLocationMapper, ProductInWarehouseMapper productInWarehouseMapper, StocksByProductInWarehousesMapper stocksByProductInWarehousesMapper){
         return new ImplProductLocation(stockRepostitory, productLocationMapper, productInWarehouseMapper, stocksByProductInWarehousesMapper);
     }
+
+    @Bean
+    public DueDateService dueDateService(StockRepostitory stockRepostitory, DueDateMapper dueDateMapper){
+        return new ImplDueDate(stockRepostitory, dueDateMapper);
+    }
 }
