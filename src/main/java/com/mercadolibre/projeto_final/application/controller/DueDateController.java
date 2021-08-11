@@ -10,15 +10,21 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1/fresh-products/due-date/")
+@RequestMapping("/api/v1/fresh-products/due-date")
 public class DueDateController {
 
     private final DueDateService dueDateService;
 
     @GetMapping
-    @RequestMapping("{querytype}")
+    @RequestMapping("/{querytype}")
     public ResponseEntity<List<DueDateView>> listByDueDate(@PathVariable int querytype){
         return ResponseEntity.ok(dueDateService.findByDueDate(querytype));
+    }
+
+    @GetMapping
+    @RequestMapping("/list")
+    public ResponseEntity<List<DueDateView>> listByDueDate(@RequestParam int days, @RequestParam(defaultValue = "") String category, @RequestParam(defaultValue = "") String order){
+        return ResponseEntity.ok(dueDateService.findByDueDateSorted(days, category, order));
     }
 
 
