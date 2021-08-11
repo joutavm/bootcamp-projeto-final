@@ -44,6 +44,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 .antMatchers( "/api/v1/fresh-products/orders/**").hasAuthority("comprador")
                 .antMatchers( "/api/v1/fresh-products/*").hasAuthority("comprador")
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/list").hasAuthority("representante")
+                .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/due-date/*").hasAuthority("representante")
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/warehouse/*").hasAuthority("representante")
                 .antMatchers(HttpMethod.GET, "/ping").permitAll()
                 .antMatchers(HttpMethod.POST,"/auth").permitAll()
