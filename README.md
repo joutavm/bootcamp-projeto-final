@@ -1,68 +1,91 @@
-# Projeto Final =)
+#  Bootcamp Final Project
+Created with 💛 by
 
-# Spring Boot App model for Java 11
+<!-- ALL-CREATORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center">
+        <a href="https://github.com/LarissaGMalagoli">
+        <img src="docs/guide/resources/larissa-malagoli.jpg" width="100px;" alt=""/><br />
+        <sub>
+            <b>Larissa Malagoli</b>
+        </sub>
+        </a><br />
+        💫</a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/joutavm">
+        <img src="docs/guide/resources/joao-magalhaes.jpg" width="100px;" alt=""/><br />
+        <sub>
+            <b>Joutavm</b>
+        </sub>
+        </a><br />
+        💻</a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/mogmeli">
+        <img src="docs/guide/resources/murilo-preccaro.jpg" width="100px;" alt=""/><br />
+        <sub>
+            <b>Mogueno</b>
+        </sub>
+        </a><br />
+        🧙‍</a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/pedro-cattel">
+        <img src="docs/guide/resources/pedro-cattel.jpeg" width="100px;" alt=""/><br />
+        <sub>
+            <b>Pedro Cattel</b>
+        </sub>
+        </a><br />
+        🍻</a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/wagnernegrao">
+        <img src="docs/guide/resources/wagner-negrao.jpg" width="100px;" height="100px;" alt=""/><br />
+        <sub>
+            <b>Wagner Negrao</b>
+        </sub>
+        </a><br />
+        🔥</a>
+    </td>
+  </tr>
 
-We provide a basic model for JDK 11 / Spring based web applications.
+</table>
 
-Please address any questions and comments to [Fury Issue Tracker](https://github.com/mercadolibre/fury/issues).
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
-## Usage
+<!-- ALL-CREATORS-LIST:END -->
+# Development
 
-### SCOPE
+* Java 11 properly installed.
+* Node.js v10 or superior.
 
-The suffix of each Fury **SCOPE** is used to know which properties file to use, it is identified from the last '-' of the name of the scope.
+Add the folowing Enviroment variables to your project:
 
-If you want to run the application from your development IDE, you need to configure the environment variable **SCOPE=local** in the app luncher.
+### Step 1 
+```SCOPE``` and ``APPLICATION`` should have the values - ``local`` or ``test`` for the desired development ecosystem.
 
-The properties of **application.yml** are always loaded and at the same time they are complemented with **application-<SCOPE_SUFFIX>.yml** properties. If a property is in both files, the one that is configured in **application-<SCOPE_SUFFIX>.yml** has preference over the property of **application.yml**.
+```local``` uses the H2 database for the DB operations, and ``test`` uses the Fury Test database. (MYSql)
 
-For example, for the **SCOPE** 'items-loader-test' the **SCOPE_SUFFIX** would be 'test' and the loaded property files will be **application.yml** and **application-test.yml**
+### Step 2
 
-### Web Server
+``SECRET_TOKEN`` variable should be created with a secure key for the correct functioning of the JWT protocol.
 
-Each Spring Boot web application includes an embedded web server. For servlet stack applications, Its supports three web Servers:
-  * Tomcat (maven dependency: `spring-boot-starter-tomcat`)
-  * Jetty (maven dependency: `spring-boot-starter-jetty`)
-  * Undertow (maven dependency: `spring-boot-starter-undertow`)
 
-This project is configured with Jetty, but to exchange WebServer, it is enough to configure the dependencies mentioned above in the pom.xml file.
+## Fury
 
-### Main
-
-The main class for this app is Application, where Spring context is initialized and SCOPE_SUFFIX is generated.
-
-### Error Handling
-
-We also provide basic handling for exceptions in ControllerExceptionHandler class.
-
-## Api Documentation
-
-This project uses Springfox to automate the generation of machine and human readable specifications for JSON APIs written using Spring. Springfox works by examining an application, once, at runtime to infer API semantics based on spring configurations, class structure and various compile time java Annotations.
-
-You can change this configuration in SpringfoxConfig class.
-
-## [Release Process](https://release-process.furycloud.io/#/)
-
-### Usage
-
-1. Specify the correct tag for your app in your `Dockerfile` and `Dockerfile.runtime`, according to the desired Java runtime version.
+You may test and run the app though fury:
 
 ```
-# Dockerfile
-FROM hub.furycloud.io/mercadolibre/java:1.11-mini
+ fury test
+ fury run
 ```
 
-You can find all available tags for your `Dockerfile` [here](https://github.com/mercadolibre/fury_java-mini#supported-tags)
+## Idea
 
-```
-# Dockerfile.runtime
-FROM hub.furycloud.io/mercadolibre/java:1.11-runtime-mini
-```
-
-You can find all available tags for your `Dockerfile.runtime` [here](https://github.com/mercadolibre/fury_java-mini-runtime#supported-tags)
-
-2. Start coding!
-
-### Questions
-
-[Release Process Issue Tracker](https://github.com/mercadolibre/fury_release-process/issues)
+Just import the project as a maven project. You need to run IntelliJ Idea using Java 11 or a newer version. Refer
+to [this article](https://intellij-support.jetbrains.com/hc/en-us/articles/206544879-Selecting-the-JDK-version-the-IDE-will-run-under) for help if you need to change it.

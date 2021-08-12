@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>Persistence</ID>
+  <OriginalElement>JavaeeElement:/d8e1ad33/joao-magalhaes/joao-magalhaes/jpa/JPA/PersistenceModel</OriginalElement>
+  <nodes>
+    <node x="180.75" y="488.0">InboundOrder#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/InboundOrder.java</node>
+    <node x="540.0" y="166.0">BuyOrder#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/BuyOrder.java</node>
+    <node x="344.0" y="26.0">Warehouse#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/Warehouse.java</node>
+    <node x="344.0" y="257.0">Section#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/Section.java</node>
+    <node x="13.5" y="0.0">Product#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/Product.java</node>
+    <node x="17.0" y="623.0">Profile#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/Profile.java</node>
+    <node x="0.0" y="192.0">Stock#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/Stock.java</node>
+    <node x="600.5" y="0.0">CartItem#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/CartItem.java</node>
+    <node x="0.0" y="763.0">User#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/User.java</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Section#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/Section.java" target="Warehouse#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/Warehouse.java" relationship="RELATION">
+      <point x="0.0" y="-58.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="InboundOrder#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/InboundOrder.java" target="Stock#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/Stock.java" relationship="RELATION">
+      <point x="0.0" y="-45.0" />
+      <point x="290.75" y="463.0" />
+      <point x="162.0" y="463.0" />
+      <point x="0.0" y="123.0" />
+    </edge>
+    <edge source="Stock#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/Stock.java" target="Product#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/Product.java" relationship="RELATION">
+      <point x="0.0" y="-123.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="InboundOrder#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/InboundOrder.java" target="Section#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/Section.java" relationship="RELATION">
+      <point x="0.0" y="-45.0" />
+      <point x="290.75" y="463.0" />
+      <point x="419.5" y="463.0" />
+      <point x="0.0" y="58.0" />
+    </edge>
+    <edge source="User#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/User.java" target="Profile#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/Profile.java" relationship="RELATION">
+      <point x="0.0" y="-58.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="BuyOrder#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/BuyOrder.java" target="CartItem#file:///Users/mpreccaro/IdeaProjects/bootcamp-projeto-final/src/main/java/com/mercadolibre/projeto_final/domain/model/CartItem.java" relationship="RELATION">
+      <point x="0.0" y="-71.0" />
+      <point x="0.0" y="58.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="427.49999999999994" y="439.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Embeddables</Category>
+    <Category>Properties</Category>
+    <Category>Superclasses</Category>
+  </Categories>
+</Diagram>
+
