@@ -8,7 +8,7 @@ Created with 💛 by
   <tr>
     <td align="center">
         <a href="https://github.com/LarissaGMalagoli">
-        <img src="resources/larissa-malagoli.jpg" width="100px;" alt=""/><br />
+        <img src="docs/guide/resources/larissa-malagoli.jpg" width="100px;" alt=""/><br />
         <sub>
             <b>Larissa Malagoli</b>
         </sub>
@@ -17,7 +17,7 @@ Created with 💛 by
     </td>
     <td align="center">
         <a href="https://github.com/joutavm">
-        <img src="resources/joao-magalhaes.jpg" width="100px;" alt=""/><br />
+        <img src="docs/guide/resources/joao-magalhaes.jpg" width="100px;" alt=""/><br />
         <sub>
             <b>Joutavm</b>
         </sub>
@@ -26,7 +26,7 @@ Created with 💛 by
     </td>
     <td align="center">
         <a href="https://github.com/mogmeli">
-        <img src="resources/murilo-preccaro.jpg" width="100px;" alt=""/><br />
+        <img src="docs/guide/resources/murilo-preccaro.jpg" width="100px;" alt=""/><br />
         <sub>
             <b>Mogueno</b>
         </sub>
@@ -35,7 +35,7 @@ Created with 💛 by
     </td>
     <td align="center">
         <a href="https://github.com/pedro-cattel">
-        <img src="resources/pedro-cattel.jpeg" width="100px;" alt=""/><br />
+        <img src="docs/guide/resources/pedro-cattel.jpeg" width="100px;" alt=""/><br />
         <sub>
             <b>Pedro Cattel</b>
         </sub>
@@ -44,7 +44,7 @@ Created with 💛 by
     </td>
     <td align="center">
         <a href="https://github.com/wagnernegrao">
-        <img src="resources/wagner-negrao.jpg" width="100px;" alt=""/><br />
+        <img src="docs/guide/resources/wagner-negrao.jpg" width="100px;" alt=""/><br />
         <sub>
             <b>Wagner Negrao</b>
         </sub>
