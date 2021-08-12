@@ -5,4 +5,5 @@ import com.mercadolibre.projeto_final.domain.model.Stock;
 
 public interface FindProductInStockService {
     Stock findProductInStock(BuyProductsForm buyProductsForm);
+    Stock findProductInStock(Long Id, Integer quantity);
 }
