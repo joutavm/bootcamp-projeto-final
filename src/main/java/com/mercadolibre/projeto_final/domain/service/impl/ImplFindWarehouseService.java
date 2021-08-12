@@ -31,12 +31,6 @@ public class ImplFindWarehouseService implements FindWarehouseService {
 
         List<Stock> stocks = stockRepostitory.findAllByInboundOrder_Section_Warehouse_Id(warehouse.getId());
 
-        if (stocks.isEmpty()) qtdStocks = 0;
-
-        qtdStocks = stocks.size();
-
-        double totalSize = warehouse.getSection().stream().mapToDouble(Section::getSize).sum();
-
-        return findWarehouseMapper.map(warehouse, totalSize, qtdStocks);
+        return findWarehouseMapper.map(warehouse, stocks);
     }
 }
