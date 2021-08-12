@@ -96,6 +96,11 @@ public class ApplicationConfiguration {
     }
 
     @Bean
+    public FindProductByNameService findProductByNameService(ProductRepository productRepository, ProductViewMapper productViewMapper){
+        return new ImplFindProductByName(productRepository, productViewMapper);
+    }
+
+    @Bean
     public CompleteBuyOrderService completeBuyOrderService(BuyOrderService buyOrderService, FindProductInStockService findProductInStockService, BuyOrderCompletedMapper buyOrderCompletedMapper){
         return new ImplCompleteBuyOrderService(buyOrderService,findProductInStockService,buyOrderCompletedMapper);
     }
