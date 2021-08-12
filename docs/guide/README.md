@@ -84,8 +84,3 @@ You may test and run the app though fury:
  fury test
  fury run
 ```
-
-## Idea
-
-Just import the project as a maven project. You need to run IntelliJ Idea using Java 11 or a newer version. Refer
-to [this article](https://intellij-support.jetbrains.com/hc/en-us/articles/206544879-Selecting-the-JDK-version-the-IDE-will-run-under) for help if you need to change it.
