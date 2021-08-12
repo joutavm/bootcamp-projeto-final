@@ -109,4 +109,9 @@ public class ApplicationConfiguration {
     public CompleteBuyOrderService completeBuyOrderService(BuyOrderService buyOrderService, FindProductInStockService findProductInStockService, BuyOrderCompletedMapper buyOrderCompletedMapper){
         return new ImplCompleteBuyOrderService(buyOrderService,findProductInStockService,buyOrderCompletedMapper);
     }
+
+    @Bean
+    public FindWarehouseService findWarehouseService(WarehouseRepository warehouseRepository, StockRepostitory stockRepostitory, FindWarehouseMapper findWarehouseMapper) {
+        return new ImplFindWarehouseService(warehouseRepository, stockRepostitory, findWarehouseMapper);
+    }
 }
