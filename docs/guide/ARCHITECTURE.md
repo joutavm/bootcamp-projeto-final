@@ -65,3 +65,34 @@ product has inside each warehouse.
 
 The seller can search for a product, inside all the warehouses, that have a due date close do expire, 
 and with that list he can execute any kind of promotion strategy to sell them as fast as possible.
+
+### US-06:ml-delete-overdue-stock
+
+```/api/v1/fresh-products/due-date/overdue```
+
+The Manager can delete all Stocks from a product that have a passed due date.
+
+### US-06:ml-complete-order
+
+``/api/v1/fresh-products/complete/{id}``
+
+Finishes the buy order, decrementing the value that the user requested from stock, and altering the status of the order
+to completed.
+
+### US-06:ml-get-product-info
+
+``api/v1/fresh-products/name/{name}``
+
+The seller can get additional information on a product.
+
+### US-06:ml-list-products-by-price
+
+``/api/v1/fresh-products/price/{order}``
+
+The seller can get an ordered list of products.
+
+### US-06:ml-return-metrics-from-warehouse
+
+``/api/v1/warehouseStatistics/{id}``
+
+The manager can check statistics on a given warehouse.
