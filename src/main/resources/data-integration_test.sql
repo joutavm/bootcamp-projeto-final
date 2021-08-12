@@ -1,4 +1,4 @@
-INSERT INTO product(category, name, price) VALUES ('FS','queijo',5),('RF','presunto',5);
+INSERT INTO product(category, name, price) VALUES ('FS','queijo',5),('RF','presunto',10);
 INSERT INTO warehouse(code) VALUES ('a');
 INSERT INTO section(code, size, warehouse_id) VALUES ('a',10,1),('secao b',5,1);
 INSERT INTO inbound_order(order_date, section_id) VALUES ('2021-08-05',1),('2021-08-05',1),('2021-08-05',1),('2021-08-05',1),('2021-08-05',1),('2021-08-05',1),('2021-08-05',1),('2021-08-05',1),('2021-08-05',1),('2021-08-05',1),('2021-08-05',1),('2021-08-05',1);

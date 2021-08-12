@@ -57,7 +57,7 @@ public class BuyOrderControllerPostTest extends ControllerTest{
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
         assertEquals("success", responseEntity.getBody().getReturnView().get(1L));
         assertEquals("success", responseEntity.getBody().getReturnView().get(2L));
-        assertEquals(new AtomicReference<>(25.0).get(), responseEntity.getBody().getTotalPrice().get());
+        assertEquals(new AtomicReference<>(35.0).get(), responseEntity.getBody().getTotalPrice().get());
 
     }
 
