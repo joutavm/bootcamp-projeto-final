@@ -1,6 +1,6 @@
 package com.mercadolibre.projeto_final.application.config.security;
 
-import com.mercadolibre.projeto_final.domain.repository.UserRepository;
+import com.mercadolibre.projeto_final.domain.service.impl.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationService authenticationService;
     private final TokenService tokenService;
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Override
     @Bean
@@ -51,7 +51,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/complete/*").hasAuthority("representante")
                 .antMatchers(HttpMethod.GET, "/ping").permitAll()
                 .antMatchers(HttpMethod.POST,"/auth").permitAll()
-                .and().addFilterBefore(new TokenAuthenticationFilter(tokenService, userRepository), UsernamePasswordAuthenticationFilter.class)
+                .and().addFilterBefore(new TokenAuthenticationFilter(tokenService, userService), UsernamePasswordAuthenticationFilter.class)
                 .csrf().disable();
     }
 

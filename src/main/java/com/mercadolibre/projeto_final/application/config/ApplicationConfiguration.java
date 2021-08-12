@@ -91,8 +91,13 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public DueDateService dueDateService(StockRepostitory stockRepostitory, DueDateMapper dueDateMapper){
-        return new ImplDueDate(stockRepostitory, dueDateMapper);
+    public DueDateService dueDateService(StockService stockService, DueDateMapper dueDateMapper){
+        return new ImplDueDate(stockService, dueDateMapper);
+    }
+
+    @Bean
+    public OverDueService overDueService(StockService stockService){
+        return new ImplOverDueService(stockService);
     }
 
     @Bean

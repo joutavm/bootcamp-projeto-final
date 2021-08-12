@@ -4,15 +4,9 @@ package com.mercadolibre.projeto_final.domain.service.impl;
 import com.mercadolibre.projeto_final.application.util.MockitoExtension;
 import com.mercadolibre.projeto_final.domain.dtos.mapper.DueDateMapper;
 import com.mercadolibre.projeto_final.domain.dtos.view.DueDateView;
-import com.mercadolibre.projeto_final.domain.dtos.view_sql.ProductLocationSqlView;
 import com.mercadolibre.projeto_final.domain.exceptions.ApiException;
-import com.mercadolibre.projeto_final.domain.exceptions.ItemNotFoundException;
 import com.mercadolibre.projeto_final.domain.model.CategoryProductEnum;
 import com.mercadolibre.projeto_final.domain.model.Stock;
-import com.mercadolibre.projeto_final.domain.repository.StockRepostitory;
-import com.sun.istack.Pool;
-import org.apache.commons.collections.ArrayStack;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,9 +15,7 @@ import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -34,7 +26,7 @@ import static org.mockito.Mockito.when;
 public class ImplDueDateServiceTest {
 
     @Mock
-    private StockRepostitory stockRepostitory;
+    private StockService stockService;
     @Mock
     private DueDateMapper dueDateMapper;
 
@@ -42,7 +34,7 @@ public class ImplDueDateServiceTest {
 
     @BeforeEach
     void setUp() {
-        implDueDate = new ImplDueDate(stockRepostitory, dueDateMapper);
+        implDueDate = new ImplDueDate(stockService, dueDateMapper);
     }
 
 
@@ -56,7 +48,7 @@ public class ImplDueDateServiceTest {
         stockList.add(stock);
 
         //when
-        when(stockRepostitory.findByDueDate(any())).thenReturn(stockList);
+        when(stockService.findByDueDate(any())).thenReturn(stockList);
         when(dueDateMapper.map(any())).thenReturn(dueDateView);
         List<DueDateView> dueDateViewListResult = implDueDate.findByDueDate(1);
 
@@ -75,7 +67,7 @@ public class ImplDueDateServiceTest {
         stockList.add(stock);
 
         //when
-        when(stockRepostitory.findByDueDate(any())).thenReturn(stockList);
+        when(stockService.findByDueDate(any())).thenReturn(stockList);
         when(dueDateMapper.map(any())).thenReturn(dueDateView);
         //List<DueDateView> dueDateViewListResult = implDueDate.findByDueDate(-1);
 

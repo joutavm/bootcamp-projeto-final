@@ -3,7 +3,6 @@ package com.mercadolibre.projeto_final.integration;
 import com.mercadolibre.projeto_final.application.config.security.TokenView;
 import com.mercadolibre.projeto_final.domain.dtos.form.LoginForm;
 import com.mercadolibre.projeto_final.domain.dtos.view.BuyOrderCompletedView;
-import com.mercadolibre.projeto_final.domain.dtos.view.DueDateView;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.*;
 
