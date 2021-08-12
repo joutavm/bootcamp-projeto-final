@@ -94,4 +94,9 @@ public class ApplicationConfiguration {
     public DueDateService dueDateService(StockRepostitory stockRepostitory, DueDateMapper dueDateMapper){
         return new ImplDueDate(stockRepostitory, dueDateMapper);
     }
+
+    @Bean
+    public CompleteBuyOrderService completeBuyOrderService(BuyOrderService buyOrderService, FindProductInStockService findProductInStockService, BuyOrderCompletedMapper buyOrderCompletedMapper){
+        return new ImplCompleteBuyOrderService(buyOrderService,findProductInStockService,buyOrderCompletedMapper);
+    }
 }
