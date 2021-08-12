@@ -30,8 +30,5 @@ public interface StockRepostitory extends JpaRepository<Stock, Long> {
 
     Long deleteAllByDueDateBefore(LocalDate date);
 
-    @Query(value = "SELECT s FROM Stock s WHERE s.dueDate <= :date")
-    List<Stock> findByDueDate(@Param("date") LocalDate date);
-
     List<Stock> findAllByInboundOrder_Section_Warehouse_Id(Long id);
 }
