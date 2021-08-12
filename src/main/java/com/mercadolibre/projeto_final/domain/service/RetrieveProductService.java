@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface RetrieveProductService {
     public List<ProductView> retrieveProductViewList();
+
+    List<ProductView> findAllSortedByPrice(String order);
 }

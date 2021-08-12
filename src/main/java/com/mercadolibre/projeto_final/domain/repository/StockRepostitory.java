@@ -26,6 +26,10 @@ public interface StockRepostitory extends JpaRepository<Stock, Long> {
     @Query(value = "SELECT new com.mercadolibre.projeto_final.domain.dtos.view_sql.ProductInWarehouseSqlView(SUM(s.currentQuantity)) FROM Stock s WHERE s.product.id=:id GROUP BY s.inboundOrder.section.warehouse")
     ProductInWarehouseSqlView findByWarehouse2(@Param("id") Long id);
 
+    List<Stock> findAllByDueDateLessThanEqual(LocalDate date);
+
+    Long deleteAllByDueDateBefore(LocalDate date);
+
     @Query(value = "SELECT s FROM Stock s WHERE s.dueDate <= :date")
     List<Stock> findByDueDate(@Param("date") LocalDate date);
 

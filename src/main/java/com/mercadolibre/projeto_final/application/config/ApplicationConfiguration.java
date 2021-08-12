@@ -91,8 +91,23 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public DueDateService dueDateService(StockRepostitory stockRepostitory, DueDateMapper dueDateMapper){
-        return new ImplDueDate(stockRepostitory, dueDateMapper);
+    public DueDateService dueDateService(StockService stockService, DueDateMapper dueDateMapper){
+        return new ImplDueDate(stockService, dueDateMapper);
+    }
+
+    @Bean
+    public OverDueService overDueService(StockService stockService){
+        return new ImplOverDueService(stockService);
+    }
+
+    @Bean
+    public FindProductByNameService findProductByNameService(ProductRepository productRepository, ProductViewMapper productViewMapper){
+        return new ImplFindProductByName(productRepository, productViewMapper);
+    }
+
+    @Bean
+    public CompleteBuyOrderService completeBuyOrderService(BuyOrderService buyOrderService, FindProductInStockService findProductInStockService, BuyOrderCompletedMapper buyOrderCompletedMapper){
+        return new ImplCompleteBuyOrderService(buyOrderService,findProductInStockService,buyOrderCompletedMapper);
     }
 
     @Bean

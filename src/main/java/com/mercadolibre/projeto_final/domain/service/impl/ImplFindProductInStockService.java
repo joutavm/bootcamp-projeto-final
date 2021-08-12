@@ -21,4 +21,13 @@ public class ImplFindProductInStockService implements FindProductInStockService 
         }
         throw new ItemNotFoundException("404", "Stock Not found", 404);
     }
+
+    @Override
+    public Stock findProductInStock(Long id, Integer quantity) {
+        for (Stock stock : stockRepostitory.findStocksWhereIdMatchesOrderAsc(id)) {
+            if(stock.getCurrentQuantity() >= quantity)
+                return stock;
+        }
+        throw new ItemNotFoundException("404", "Stock Not found", 404);
+    }
 }

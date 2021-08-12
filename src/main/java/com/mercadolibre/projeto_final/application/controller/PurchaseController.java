@@ -26,4 +26,9 @@ public class PurchaseController {
     public ResponseEntity<List<ProductView>> listAllByCategory(@PathVariable("category") String category) {
         return ResponseEntity.ok(findProductService.findAllProductsByCategory(category));
     }
+
+    @GetMapping("/price/{order}")
+    public ResponseEntity<List<ProductView>> listAllAndSortByPrice(@PathVariable("order") String order){
+        return ResponseEntity.ok(retrieveProductService.findAllSortedByPrice(order));
+    }
 }
