@@ -37,7 +37,7 @@ public class ImplCompleteBuyOrderService implements CompleteBuyOrderService {
                 Stock validBatch = findProductInStockService.findProductInStock(item.getProductId(), item.getQuantity());
                 validBatch.setCurrentQuantity(validBatch.getCurrentQuantity() - item.getQuantity());
             });
-            msg = "The BuyOrder was done succesfully! The items will be shipped to your house.";
+            msg = "The purchase was successful! The items will be shipped to your house.";
             status = BuyOrderStatusEnum.CO;
         } catch (ItemNotFoundException e){
             msg = "The items selected previously on your cart are not available anymore.";

@@ -4,22 +4,26 @@
 
 
 spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://proxysql.master.meliseginf.com:6612/pcatteldb?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8&sessionVariables=sql_mode=''
-    username: pcattel
-    password: 0HI42K74
-    platform: local
+    url: jdbc:h2:mem:default
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
     initialization-mode: always
-
+    platform: local
   jpa:
-    database: mysql
-    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+
     hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-
-
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
 jwt:
   secret: ${SECRET_TOKEN}
   expiration: 86400000
