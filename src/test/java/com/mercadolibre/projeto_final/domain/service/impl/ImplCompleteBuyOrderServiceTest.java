@@ -75,7 +75,7 @@ public class ImplCompleteBuyOrderServiceTest {
 
         //then
         assertEquals(BuyOrderStatusEnum.FL.toString(),result.getOrderStatus());
-        assertEquals("The items selected previously on your cart are not available anymore.,result.getValid());
+        assertEquals("The items selected previously on your cart are not available anymore.",result.getValid());
     }
 
 
