@@ -3,10 +3,8 @@ package com.mercadolibre.projeto_final.domain.service.impl;
 import com.mercadolibre.projeto_final.domain.dtos.mapper.DueDateMapper;
 import com.mercadolibre.projeto_final.domain.dtos.view.DueDateView;
 import com.mercadolibre.projeto_final.domain.exceptions.ApiException;
-import com.mercadolibre.projeto_final.domain.exceptions.ItemNotFoundException;
 import com.mercadolibre.projeto_final.domain.model.CategoryProductEnum;
 import com.mercadolibre.projeto_final.domain.model.Stock;
-import com.mercadolibre.projeto_final.domain.repository.StockRepostitory;
 import com.mercadolibre.projeto_final.domain.service.DueDateService;
 import lombok.RequiredArgsConstructor;
 
@@ -21,17 +19,13 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 public class ImplDueDate implements DueDateService {
 
-    private final StockRepostitory stockRepostitory;
+    private final StockService stockService;
     private final DueDateMapper dueDateMapper;
 
     @Override
     public List<DueDateView> findByDueDate(int days) {
         LocalDate date = convertDays(days);
-        List<Stock> stockList = stockRepostitory.findByDueDate(date);
-        if(stockList.isEmpty()){
-            throw new ItemNotFoundException("Not Found", "Zero stocks found with that due date!", 404);
-        }
-
+        List<Stock> stockList = stockService.findByDueDate(date);
         return stockList.stream().map(dueDateMapper::map).collect(Collectors.toList());
     }
 
@@ -72,7 +66,6 @@ public class ImplDueDate implements DueDateService {
 
 
     }
-
 
 
     private void validateDays(int days){
