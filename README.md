@@ -64,6 +64,18 @@ Created with 💛 by
 * Java 11 properly installed.
 * Node.js v10 or superior.
 
+Add the folowing Enviroment variables to your project:
+
+### Step 1 
+```SCOPE``` and ``APPLICATION`` should have the values - ``local`` or ``test`` for the desired development ecosystem.
+
+```local``` uses the H2 database for the DB operations, and ``test`` uses the Fury Test database. (MYSql)
+
+### Step 2
+
+``SECRET_TOKEN`` variable should be created with a secure key for the correct functioning of the JWT protocol.
+
+
 ## Fury
 
 You may test and run the app though fury:
