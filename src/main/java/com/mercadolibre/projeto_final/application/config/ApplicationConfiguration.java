@@ -94,4 +94,9 @@ public class ApplicationConfiguration {
     public DueDateService dueDateService(StockRepostitory stockRepostitory, DueDateMapper dueDateMapper){
         return new ImplDueDate(stockRepostitory, dueDateMapper);
     }
+
+    @Bean
+    public FindWarehouseService findWarehouseService(WarehouseRepository warehouseRepository, StockRepostitory stockRepostitory, FindWarehouseMapper findWarehouseMapper) {
+        return new ImplFindWarehouseService(warehouseRepository, stockRepostitory, findWarehouseMapper);
+    }
 }
