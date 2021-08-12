@@ -8,7 +8,7 @@ Created with 💛 by
   <tr>
     <td align="center">
         <a href="https://github.com/LarissaGMalagoli">
-        <img src="resources/larissa-malagoli.jpg" width="100px;" alt=""/><br />
+        <img src="docs/guide/resources/larissa-malagoli.jpg" width="100px;" alt=""/><br />
         <sub>
             <b>Larissa Malagoli</b>
         </sub>
@@ -17,7 +17,7 @@ Created with 💛 by
     </td>
     <td align="center">
         <a href="https://github.com/joutavm">
-        <img src="resources/joao-magalhaes.jpg" width="100px;" alt=""/><br />
+        <img src="docs/guide/resources/joao-magalhaes.jpg" width="100px;" alt=""/><br />
         <sub>
             <b>Joutavm</b>
         </sub>
@@ -26,7 +26,7 @@ Created with 💛 by
     </td>
     <td align="center">
         <a href="https://github.com/mogmeli">
-        <img src="resources/murilo-preccaro.jpg" width="100px;" alt=""/><br />
+        <img src="docs/guide/resources/murilo-preccaro.jpg" width="100px;" alt=""/><br />
         <sub>
             <b>Mogueno</b>
         </sub>
@@ -35,7 +35,7 @@ Created with 💛 by
     </td>
     <td align="center">
         <a href="https://github.com/pedro-cattel">
-        <img src="resources/pedro-cattel.jpeg" width="100px;" alt=""/><br />
+        <img src="docs/guide/resources/pedro-cattel.jpeg" width="100px;" alt=""/><br />
         <sub>
             <b>Pedro Cattel</b>
         </sub>
@@ -44,7 +44,7 @@ Created with 💛 by
     </td>
     <td align="center">
         <a href="https://github.com/wagnernegrao">
-        <img src="resources/wagner-negrao.jpg" width="100px;" alt=""/><br />
+        <img src="docs/guide/resources/wagner-negrao.jpg" width="100px;" height="100px;" alt=""/><br />
         <sub>
             <b>Wagner Negrao</b>
         </sub>
@@ -64,6 +64,18 @@ Created with 💛 by
 * Java 11 properly installed.
 * Node.js v10 or superior.
 
+Add the folowing Enviroment variables to your project:
+
+### Step 1
+```SCOPE``` and ``APPLICATION`` should have the values - ``local`` or ``test`` for the desired development ecosystem.
+
+```local``` uses the H2 database for the DB operations, and ``test`` uses the Fury Test database. (MYSql)
+
+### Step 2
+
+``SECRET_TOKEN`` variable should be created with a secure key for the correct functioning of the JWT protocol.
+
+
 ## Fury
 
 You may test and run the app though fury:
@@ -72,8 +84,3 @@ You may test and run the app though fury:
  fury test
  fury run
 ```
-
-## Idea
-
-Just import the project as a maven project. You need to run IntelliJ Idea using Java 11 or a newer version. Refer
-to [this article](https://intellij-support.jetbrains.com/hc/en-us/articles/206544879-Selecting-the-JDK-version-the-IDE-will-run-under) for help if you need to change it.
