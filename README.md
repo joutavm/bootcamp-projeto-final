@@ -44,7 +44,7 @@ Created with 💛 by
     </td>
     <td align="center">
         <a href="https://github.com/wagnernegrao">
-        <img src="docs/guide/resources/wagner-negrao.jpg" width="100px;" alt=""/><br />
+        <img src="docs/guide/resources/wagner-negrao.jpg" width="100px;" height="100px;" alt=""/><br />
         <sub>
             <b>Wagner Negrao</b>
         </sub>
